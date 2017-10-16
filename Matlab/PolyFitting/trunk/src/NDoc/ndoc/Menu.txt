@@ -1,0 +1,68 @@
+Format: 1.35
+
+
+Title: PolyFitting Project
+SubTitle: version 0.1
+
+Footer: Project documentation
+
+# These are indexes you deleted, so Natural Docs will not add them again
+# unless you remove them from this line.
+
+Don't Index: Types
+
+
+# --------------------------------------------------------------------------
+# 
+# Cut and paste the lines below to change the order in which your files
+# appear on the menu.  Don't worry about adding or removing files, Natural
+# Docs will take care of that.
+# 
+# You can further organize the menu by grouping the entries.  Add a
+# "Group: [name] {" line to start a group, and add a "}" to end it.
+# 
+# You can add text and web links to the menu by adding "Text: [text]" and
+# "Link: [name] ([URL])" lines, respectively.
+# 
+# The formatting and comments are auto-generated, so don't worry about
+# neatness when editing the file.  Natural Docs will clean it up the next
+# time it is run.  When working with groups, just deal with the braces and
+# forget about the indentation and comments.
+# 
+# --------------------------------------------------------------------------
+
+
+Group: Description  {
+
+   File: Paper Writing  (no auto-title, thesis.txt)
+   File: Description  (no auto-title, project.txt)
+   File: Report  (no auto-title, report.txt)
+   File: Miscellaneous  (comments.txt)
+   }  # Group: Description
+
+Group: Implementation  {
+
+   File: Main Matlab Wrapper  (no auto-title, PolyFitting.m)
+   File: Data Loading  (no auto-title, hunter_load_data.m)
+   File: Pre-Processing 1  (no auto-title, preprocess.c)
+   File: Pre-Processing 2  (no auto-title, preprocess_2.c)
+   File: Hough Transform  (no auto-title, myht.c)
+   File: Missing Data Recover  (no auto-title, data_recover.c)
+   File: project.c  (project.c)
+   }  # Group: Implementation
+
+Group: Reference  {
+
+   File: Reference  (no auto-title, reference.txt)
+   File: Matlab Code  (no auto-title, matlab.txt)
+   File: C Code  (no auto-title, c_code.txt)
+   }  # Group: Reference
+
+Group: Index  {
+
+   Index: Everything
+   File Index: Files
+   Function Index: Functions
+   Variable Index: Variables
+   }  # Group: Index
+

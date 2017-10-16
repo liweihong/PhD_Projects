@@ -1,0 +1,480 @@
+File: Description
+
+Group: Project description
+
+Introduction, motivation, discussion for this project
+
+Introduction:
+
+Motivation:
+
+Discussion:
+
+Reference: 
+
+	For building modeling papers, mostly from SIGGRPAH, refer to <Buildings Modeling Papers>. 
+
+	For reconstruction from 3D point cloudy, refer to <Reverse Engineering Papers>.
+
+	For symmetry inference, refer to <Symmetry Papers>.
+
+	For Douglas Peucker algorithm for polygon generation based on points, refer to <DP Papers>.
+
+	For ball-pivot algorithm, refer to <BPA Papers>.
+	
+Group: Project progress (result)
+
+<file:../../Project/readme.txt>
+
+Group: August 13 2009
+
+Topic: Discussion on Paper Review
+Remain work on dissertation defense:
+
+1 - Graph-Cut for local segmentation (Yuri Boykov), starting point by intersection? 
+2 - Remove/add control points across keyslices. ( refer to Greg Turk SIG'94 )
+3 - Taper to a line and follow-me structure inference.
+4 - Thesis writing.
+
+Requirement:
+
+1 - Low resolution show big rough structure/layer structure. such as GCT building, low reso should show arc and wall without windows. 
+    It would be better that we could show different reso with texture mapping.
+2 - Automatically generate good model on simulated model which contains taper to point/line, window(local extrusion).
+
+Schedule:
+
+Week of 12/21 :: Deposit thesis ( right before Christmas week ).
+
+Week of 12/1 :: Oral defense ( leave 3 weeks for deposit thesis as discussed ).
+
+Week of 11/10 :: Thesis draft sent to committee members ( 3 weeks prior to oral defense, this is required by the department. )
+
+Frow now to 11/10, I will be doing my best on the following
+
+1. Segmentation to get local extrusion. ( 3 weeks )
+
+2. Remove/add control points across keyslices. ( 3 weeks )
+
+3. Taper to a line and follow-me structure inference. ( 3 weeks )
+
+4. Thesis writing. ( starting now and 3 dedicated weeks )
+
+Group: June 18 2009
+
+Topic: Online Demo Presentation
+ClearEdge3D(http://www.clearedge3d.com/), EdgeWise Demo
+
+Flow:
+
+1 - Load point cloud (displayed in EdgeWise)
+2 - Initially classify points (ground, directions), still points
+3 - Advanced classify data, automated polygons, only planar, have shadow problem.
+4 - CAD model (dxf), import to SketchUp for editing. 
+5 - Photo-texture ( in Google SketchUp, manually, takes 30 minutes)
+
+Comments:
+
+1 - the CAD model is far from prefect (like spike, noise polygon). It just provides a good starting point for editing.
+2 - there is no photo-texture module in EdgeWise, take advantage of SketchUp
+3 - the resolution is fixed, not adjustable.
+4 - handle only planar surface, no curves or follow-me structure. 
+    With a plan to handle cylindar, other geometry after 6 months or 1 year. (low priority).
+5 - the data is about 300,000 points, small dataset. 
+
+Group: April 30 2009
+
+Topic: Dissertation Proposal
+Proposal exam 4430@12:30 on 4/30/09
+
+Exam:
+
+big O analysis on the algorithm of each key module
+:
+how to fix gap between two slices.
+
+Softwares:
+render - open source for rendering the model, generate the obj file???
+AutoScreenRecorder - generate the moive of screen (http://wisdom-soft.com/asr/index.htm)
+photo sketchup - youtube ("photoSketch")
+
+SIGGRAPH Asia:
+1 - generate a color slab on Open Inventor 
+2 - intro + LiDAR + Berkerley (Zhigang' book). 
+3 - curvature based paragraph
+4 - elaborate the segmentation + PPT slide into paper
+5 - ask gene for false image (color index) + color slab generation
+
+Reference:
+1 - Zakhor 
+2 - USC
+3 - Ping Tan (SIGGRAPH Asia)
+4 - youcity.com (to thesis)
+
+
+
+Group: January 2009
+
+Topic: Chinese New Year (01/26/09)
+Meeting at CCNY for remaining parts of dissertation defense.
+
+:
+
+* Inspect (rapidform)
+
+* polyworks
+deviateion mapps
+
+qslim 2.1
+
+* new model/ text mapping(deviation mapps)
+
+Group: December 2008
+
+Topic: Week 2 (12/15/08)
+Meeting at CCNY for remaining parts of dissertation defense.
+
+:
+
+*Generate solid face:*
+
+Generate push/pull layers from the key slices.
+
+rde - sketchup tools, Ruby development environment which is integrated with Google SketchUp
+color - different colors (more) for different layers.
+impl - try new alg to quickly generate the face model
+
+:
+
+*Bar based UI:*
+
+Two pre-defined bars are proposed, that is
+
+BPA bar - used to adjust the resolution of the boundary
+Key bar - used to adjust the key slices detection, namely the height of extrusion structure
+impl - use Ruby UI API to create a bar and assoicate it with the display
+
+:
+
+*Error measurements:*
+
+Measure and display the errors on the face model
+
+source - point cloud in 3d filter boxes
+algorithm - based on 2d error on original slices, and map back to the faces
+impl - paste error image on face using Ruby
+
+
+
+Group: January 2008
+
+Topic: Week 2 (01/07/08)
+Meeting at CCNY for possible directions.
+
+* Writing the project
+
+* Key detection from the other two direction slices
+
+* Tapered structure inference, starting from simple synthesis examples.
+
+Group: December
+
+Topic: Week 3 (12/17/07)
+New dxf has been generated based on BPA + HT.
+
+Steps towards DXF:
+
+0: sliced images generated (1000) - _
+
+1: noise cleaned based on bounding box (1000) - _cleaned
+
+2: symmetry computation (1000) - _recoverd
+
+3: boundary computation for key slices detection (1000) - _boundary
+
+4: key slices generation (65/1000) - _result (aaa_xxx.tif)
+
+4.1: boundary vectorization (65/1000) - _result (bbb_xxx.tif)
+
+4.2: manually remove some noise based on result of 4.1, go back to 4.1 again - _result (bbb_xxx.tif)
+
+4.3: dump the vector into ascii file for dxf generation. - _result (bbb_xxx_dump_0.txt)
+
+5: generate dxf file. - BPA.dxf
+
+I have systematically generated the DXF/3D boundary profile from point clouds as follows:
+
+After the bug-fixing processing, I have successfully generated boundary for all key slices.
+
+Improvements:
+
+
+Topic: Week 2 (12/10/07)
+Finished step 2 and *1 in <Week 1 (12/03/07)>, work on key slice detection.
+
+Idea: 
+
+try to combine pixel landing (PL) and HD methods, namely, if HD detects a significant change, but might be only new pixels added by PL,
+then, consider them as one key slices. Integrate all similar slices as a key slice for BPA + HT
+
+Topic: Week 1 (12/03/07)
+Meeting at CCNY for possible directions.
+
+Discussions:
+
+0. Try to generate final dxf file by - 
+
+1. Key slices detection based on 2 approach, with big threshold (try *1, *2)
+
+2. Accurate inside and outside bounding box and symmetry vertical line detection followed by BPA + HT (up to 2 or 1 pixel radius)
+
+*1. Try another 1000 slices vertically as a preprocess, for key slice detection
+
+*2. Merging closed slices and variable length slicing for key slice detection
+
+*3. Try radon transform from medical image processing.
+
+Group: November
+
+Topic: Week 4 (11/26/07)
+Convert the 3D point cloud to 2D slice images. The purpose is to find key slices.
+
+Algorithms:
+
+	1. slice the 3D point cloud into a lot of 2D images.
+	
+	2. get the boundary of the images, find a reference image and then use Hausdorff distance as measure function to get the key slices.
+
+Topic: Week 2 (11/12/07)
+Completed the steps proposed on <Week 1 (11/05/07)>, the Revision is 233 in SVN.
+
+Algorithms on step 0 & 1:
+
+	Basically, the boundary points are stored in order using STL deque<int> class. When visualizing these boundary points, I connected them using red, green, blue alternatively. If this boundary is re-pivoting for refinement, the lines keep unchanged are drawn using the same colors, which makes the comparison easier.
+	
+	I started with a relative large size of a ball (with radius of 32 pixels in the results). Based on BPA algorithm, the pivoting processing with this ball will connect all holes and discontinuous on the boundary (the gap should be less than 64 pixels, which is the diameter of the ball. Should a gap be more than 64 pixels? we can enlarge the radius accordingly). Usually, after this initial process, we can only obtain a low resolution boundary, check out xxx_refine_with_rad_32.tif
+	
+	To get more accurate boundary, a refinement process is applied after this initial pivoting. During the initial pivoting, we shall keep track of some information for further refinement, such as the coordinates and order of the boundary points detected by the BPA algorithm, and their directions. For debugging and visualization purpose, each boundary point is assigned a color (either red, green or blue). The first iteration of the refinement takes the half length of the original ball, namely 32/2 = 16 pixels. For each line (defined by two adjacent boundary points) detected by the initial BPA, we check whether it needs to be refined or not based on the following two criteria: 1. if this line is shorter than a threshold (half radius, namely 16/2 = 8 pixel),  then this line needs no refinement during this iteration (may need refinement for further iteration where the radius is reduced.). 2. if the length of this line is larger than the threshold, then I checked how many real data landing on this line. If it exceeds a certain percentage, say 50%, then we do not need to do refinement on this line either (permanently). 
+	
+	If refinement is needed on a line, the BPA algorithm with smaller ball size is applied as following: the first point and its direction are taken as input, and the smaller ball was pivoting on the original image, until EITHER it reached the end point of this line OR it turned around at a place where the refinement ball size is smaller than the gap. If it reached the other point of the line, which means this pivoting is effective and new points detected during the process are inserted into the boundary deque, together with their direction and colors assigned for further refinement. If the ball could not reach the other end of the line, all new points it detected are discarded. We can keep doing this refinement process (for each iteration, the ball size is reduced by half, namely 32, 16, 8, 4, ...) until the boundary detected is good enough for representing the original image.
+	
+	Attached please check out the results I obtained using the above methods. I chose 4 images from our sliced data: 
+	slice_107.tif:       a group of simple boundary.
+	slice_1024_225.tif:  a single boundary with a good shape.
+	slice_1024_146.tif:  a single boundary with a broken shape.
+	slice_1024_255.tif:  a single boundary with a complicated shape.
+	
+	All of them are refined using radius 32, 16, 8, and 4 pixels, which can be identified based on the file name. To compare the result, mspaint.exe might be a good tool on Windows platform.
+
+	
+
+Topic: Week 1 (11/05/07)
+Based on the discussions on <Week 4 (09/25/07)> in possible directions, try 0 and 1 steps.
+
+0. Improve the turning back case:
+
+    This might be solved automatically after 1, since for big ball, it's easy to handle turning back case? But we need to remember where is
+	the broke position, and when doing refine with small size ball, we know where to stop.
+
+1. Try multi-resolution of the ball sizes to get the sharp coners of the fascade:
+	
+	Starting from the large size of the ball, reduce to smaller one.
+	
+	The idea is to save the touched point, direction and normal of the ball for each step during large ball pivot.
+	When reducing the radius of the ball, try to re-pivot those line segments, which :
+	
+	1. the length of the line seg is larger than a variable threshold, which depends on the ball size, AND-
+	
+	2. check the correctness of the new line seg. (make some rules like priority?)
+
+
+Group: October
+
+Topic: Week 4 (10/25/07)
+Creating the Thesis folder in the repository.
+
+Group: September
+
+Topic: Week 4 (09/25/07)
+Meeting at CCNY for possible directions.
+
+Discussions:
+
+0. Improve the turning back case.
+
+1. Try multi-resolution of the ball sizes to get the sharp coners of the fascade. (Starting from the large size of the ball, reduce to smaller one.)
+
+2. Make use of 3D point data, to test the thickness of the projections.
+
+3. For tapered one, try to avoid shape inference, but simply use dilation/erosion to match
+
+4. HT could be an option (post-process) to beatutify the boundary.. Play with different ball sizes for the boundary.
+
+Group: August
+
+Topic: Week 3 (08/20/07)
+Ball-pivot algorithm on 2D image for connecting boundary points
+
+Group: July
+
+Topic: Week 3 (07/20/07)
+dxf file generation from the similarity images
+
+Group: June
+
+Topic: Week 21 (06/25/07)
+Similarity measure with Hausdorff distance.
+
+Topic: Week 20 (06/18/07)
+Similarity measure with Hausdorff distance.
+
+Topic: Week 19 (06/11/07)
+Similarity measure with Hausdorff distance.
+
+Topic: Week 18 (06/04/07)
+Compute the similarity of the adjacent slices, using pixel landing (intuitively way)
+
+Group: May
+
+Topic: Week 17 (05/28/07)
+Improve the HT, convert Matlab to C++
+
+Topic: Week 16 (05/21/07)
+Improve the HT, and tried to compute the comparison from raw range data.
+
+Topic: Week 15 (04/14/07)
+Improve the HT, and tried to compute the comparison from raw range data.
+
+Topic: Week 14 (05/07/07)
+Improve the HT, and tried to compute the comparison from raw range data.
+
+Topic: Week 13 (04/30/07)
+Improve the preprocess, using cluster to get the boundary pixels.
+
+Group: April
+
+Topic: Week 12 (04/23/07)
+Compute the closed boundary represented by chain code
+
+Topic: Week 11 (04/16/07)
+Compute the closed boundary represented by chain code
+
+Topic: Week 10 (04/09/07)
+Compute the closed boundary represented by chain code
+
+Topic: Week 9 (04/02/07)
+Compute the closed boundary represented by chain code
+
+Group: March
+
+Topic: Week 8 (03/26/07)
+Douglas-Peucker Algorithm & Symmetry
+
+* 1. Douglas-Peucker: First apply dilation and then Symmetry data recover, apply DP Algorithms.
+
+* 2. Symmetry: try Monte-Carlo Symmetry method to get global and local Symmetry lines to recover data.
+
+Topic: Week 7 (03/19/07)
+Douglas-Peucker Algorithm & Symmetry
+
+* 1. Douglas-Peucker: First apply dilation and then Symmetry data recover, apply DP Algorithms.
+
+* 2. Symmetry: try Monte-Carlo Symmetry method to get global and local Symmetry lines to recover data.
+
+Topic: Week 6 (03/12/07)
+Douglas-Peucker Algorithm & Symmetry
+
+Two Algorithms to be tried:
+
+* 1. Douglas-Peucker: First apply dilation and then Symmetry data recover, apply DP Algorithms.
+
+* 2. Symmetry: try Monte-Carlo Symmetry method to get global and local Symmetry lines to recover data.
+
+Topic: Week 5 (03/05/07)
+Compute the closed boundary represented by chain code
+
+First::
+* Try to connect all lines to construct a closed polygon
+* Try later to include non-linear boundary, such as _arc_, _circle_, _B-Zerier/B-spline_ lines.
+
+Group: Feburary
+
+Topic: Week 4 (02/26/07)
+Geormetry building reconstruction.
+
+First::
+
+* Try clean up all the images available (10 *-* 60)
+* Try to get the fitting line by clean up all the noise (use some prior knowledge) and missing data recover (20 - 50).
+
+Second::
+
+* Need to find a tool to reconstruct the model based on the rules, like _SketchUp_ (no capability) or _CityEngine_ (not free?)
+* Ask George or Ioannis to get the original data. Reasons are: 1. sampling in any density. 2. sampling vertically as well as horinzontally.
+
+
+
+Topic: Week 3 (02/19/07)
+Chain Code representation
+
+First:
+Check the point cloudy data to see what is wrong with small files. 
+Ask Saviash for software?
+> There is nothing wrong with the slides. The only thing is the effect slides are between 10 and 60.
+
+Topic: Week 2 (02/12/07)
+Monte Carlo symmetry
+
+Comments:
+Monte Carlo methods are far from mature to explore research problem so far, which are not the expertise 
+of both George and Zhigang either. Based on this consideration, it might be better to stick to other methods.
+
+See <Symmetry Papers> for papers.
+
+Topic: Week 1 (02/05/07)
+Natural Docs generation
+
+See <myHT> for details.
+
+Source Code:
+
+	<file:../../../myht.c>
+	
+
+Group: Activities before ND creation
+
+Topic: January 2007
+Meeting 4 (01/04/07)
+
+* Fouth meeting: Symmetry on real data; C version and real data
+* Using mex to convert the C code to Matlab library to boost the computation.
+* Compute the symmetry to recover the missing data, refer to <data_recover_mexFunction> for details
+
+Topic: December 2006
+Meeting 3 (12/06/06)
+
+* Third meeting: Hough Transform on real data, refer to <Meeting 3 notes> for details.
+* There are noise existed in the real data, preprocesses were done on these data to remove the noise.
+* Also, missing data is another problem on real data, possible solution is to compute the symmetry for recovering the data.
+
+Topic: November 2006
+Meeting 2 (11/06/06)
+
+* Second meeting: Matlab code to create a GUI for showing result.
+* Simulation based on randomized data, which were generated from uniform and Gaussian distribution. Refer to <Meeting 2 notes> for details.
+* Hough transform applied to the randomized data.
+
+
+Topic: October 2006
+Meeting 1 (10/24/06)
+
+* First meeting; introduction of the project.
+
+Goal:
+- Compress the large cloud points file using Geometry compression
+- Display the building using Geometry representation, such as Google-SketchUp
+- Introduce resolution control based on the compression rate, namely the low resolution, the faster; the high resolution, the slower.
+
+Possible solutions:
+- Represent the building using some simple rules for man-made building, borrowed from SketchUp or papers. 
+- Make use of the building rules to store the offline data, namely preprocess the cloud data to geometry data?

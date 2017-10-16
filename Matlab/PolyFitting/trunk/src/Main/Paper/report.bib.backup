@@ -1,0 +1,82 @@
+@INPROCEEDINGS{kfcmsp_folding_sig_08,
+	AUTHOR = "M. Kilian, S. Fl{\"o}ry, Z. Chen, N. J. Mitra, A. Sheffer, H. Pottmann",
+	TITLE = "Curved Folding",
+	BOOKTITLE = "ACM Transactions on Graphics",
+	VOLUME = "27",
+	NUMBER = "3",
+	PAGES = "75:1--75:9",
+	YEAR = "2008",
+}
+
+@ARTICLE{Fisher04applyingknowledge,
+    author = {Robert B. Fisher},
+    title = {Applying knowledge to reverse engineering problems},
+    journal = {Computer-Aided Design},
+    year = {2004},
+    volume = {36},
+    pages = {501--510}
+}
+
+@INPROCEEDINGS{Castellani02improvingenvironment,
+    author = {Umberto Castellani and Salvatore Livatino and Robert B. Fisher},
+    title = {Improving Environment Modelling by Edge Occlusion Surface Completion},
+    booktitle = {Proc. Int. Symp. on 3D Data Processing Visualization and Transmission (3DPVT},
+    year = {2002},
+    pages = {672--675}
+}
+
+@ARTICLE{Cohen01multiplecontour,
+    author = {Laurent D. Cohen and Thomas Deschamps},
+    title = {Multiple contour finding and perceptual grouping using minimal paths},
+    journal = {Journal of Mathematical Imaging and Vision},
+    year = {2001},
+    volume = {14},
+    pages = {225--236}
+}
+
+@ARTICLE{Whitaker98alevel-set,
+    author = {Ross T. Whitaker},
+    title = {A level-set approach to 3d reconstruction from range data},
+    journal = {International Journal of Computer Vision},
+    year = {1998},
+    volume = {29},
+    pages = {203--231}
+}
+
+@INPROCEEDINGS{Braude06contour-basedsurface,
+    author = {Ilya Braude and Jeffrey Marker and Ken Museth and Jonathan Nissanov and David Breen},
+    title = {Contour-based surface reconstruction using implicit curve fitting, and distance field filtering and interpolation},
+    booktitle = {In Proc. International Workshop on Volume Graphics},
+    year = {2006},
+    pages = {95--102}
+}
+
+@INPROCEEDINGS{2004SPIE.5474...66K,
+   author = {{Konovalov}, A.~B. and {Lyubimov}, V.~V.},
+    title = "{High-resolution restoration of diffuse optical images reconstructed by the photon average trajectories method}",
+booktitle = {Society of Photo-Optical Instrumentation Engineers (SPIE) Conference Series},
+     year = 2004,
+   series = {Presented at the Society of Photo-Optical Instrumentation Engineers (SPIE) Conference},
+   volume = 5474,
+   editor = {{Tuchin}, V.~V.},
+    month = aug,
+    pages = {66-79},
+      doi = {10.1117/12.578354},
+   adsurl = {http://adsabs.harvard.edu/abs/2004SPIE.5474...66K},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@article{1265211,
+ author = {R. Barbuzza and M. V\'{e}nere and A. Clausse},
+ title = {Tomographic reconstruction using heuristic Monte Carlo methods},
+ journal = {Journal of Heuristics},
+ volume = {13},
+ number = {3},
+ year = {2007},
+ issn = {1381-1231},
+ pages = {227--242},
+ doi = {http://dx.doi.org/10.1007/s10732-007-9017-3},
+ publisher = {Kluwer Academic Publishers},
+ address = {Hingham, MA, USA},
+ }
+

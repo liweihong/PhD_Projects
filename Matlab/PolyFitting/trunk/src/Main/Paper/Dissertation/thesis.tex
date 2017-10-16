@@ -1,0 +1,205 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%                                                          %%%%%%%%
+%%%%%%%%            VERSION: 1.0                                  %%%%%%%%
+%%%%%%%%            Septempber 2009                               %%%%%%%%
+%%%%%%%%                                                          %%%%%%%%
+%%%%%%%%                                                          %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{report}
+\usepackage{thesis}
+%-----------------------------------------------------------------------
+% BESIDES thesis.sty PUT HERE ALL PACKAGES THAT YOU WANT INCLUDED
+%-----------------------------------------------------------------------
+\usepackage{supertech}
+\usepackage{verbatim}
+\usepackage{latexsym}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{epsfig}
+\usepackage{epsf}
+\usepackage{setspace}
+\usepackage{graphics}
+\usepackage{makeidx}
+\usepackage{url}
+\usepackage{wrapfig}
+%\usepackage[pdftex, bookmarks]{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+%\usepackage{pdfpages}
+%\usepackage[pdftex,bookmarks,colorlinks]{hyperref}
+%\usepackage[colorlinks]{hyperref}
+\usepackage[T1]{fontenc}
+%\usepackage{tgschola}
+\usepackage[adobe-utopia]{mathdesign}
+
+
+\def\bigsqcap{\mathop{\rule[-0.2ex]{.07em}{2.17ex}
+                \rule[1.8ex]{0.5em}{.17ex}
+                \rule[-0.2ex]{.07em}{2.17ex}}}
+
+%\def\thetheorem{\arabic\c@figure\c@theorem}
+
+
+\newcommand{\Eq}[1] {Eq.~(\ref{eq:#1})}
+\newcommand{\Fig}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\Sec}[1]{Sec.~\ref{sec:#1}}
+\newcommand{\Eqs}   {Eqs.~}
+\newcommand{\Figs}  {Figs.~}
+\newcommand{\Tbl}[1]{Table~\ref{tbl:#1}}
+\newcommand{\Etal}  {{\it et al.}}
+\newcommand{\Figa}[1]{Fig.~\ref{fig:#1}(a)}
+\newcommand{\Figb}[1]{Fig.~\ref{fig:#1}(b)}
+\newcommand{\Figc}[1]{Fig.~\ref{fig:#1}(c)}
+\newcommand{\Figd}[1]{Fig.~\ref{fig:#1}(d)}
+\newcommand{\ifall} {\iftrue} %\iffalse | \iftrue
+
+\graphicspath{{figures/}{figures/chapt5/}{figures/chapt10/}}
+ 
+
+% TO COPYRIGHT OR NOT TO COPYRIGHT; THAT IS THE QUESTION
+%
+%\copyrighttrue
+%
+% AFTER ALL COPIES OF THE DISSERTATION HAVE BEEN MADE, YOU WILL ALSO
+% NEED A COPY OF THE TITLE PAGE AND ABSTRACT (WITH ADVISOR'S NAME) TO
+% SUBMIT TO Univ. of Michigan.  AT THIS POINT, ENABLE THE FOLLOWING FLAG.
+% DO NOT TURN IT ON FOR FINAL GRAD SCHOOL COPIES.
+%
+%
+%-----------------------------------------------------------------------
+
+\settings \submitdate{2011}
+
+%-----------------------------------------------------------------------
+% OBVIOUSLY THE FOLLOWING ARE ALSO DISSERTATION-DEPENDENT
+%-----------------------------------------------------------------------
+
+%-------------------------------------------------------------------------
+% THE FOLLOWING FIELDS ARE NEEDED ONLY IF YOU ARE PREPARING THE
+% SIGNATURE PAGE YOURSELF.  IF SO, FIRST UNCOMMENT THE FOLLOWING LINE:
+%
+%\signaturetrue
+%
+% IF YOU HAVE MORE THAN 4 MEMBERS IN THE COMMITTEE, SET ONE OF THE
+% FOLLOWING FLAGS, DEPENDING ON HOW MANY YOU HAVE.
+% 5?
+%\fiveincommittee
+% 6?
+%\sixincommitteetrue
+% IF YOU HAVE MORE THAN 6, GOOD LUCK!
+%-------------------------------------------------------------------------
+ \theauthor{Weihong Li}
+ \thetitle{Lightweight 3D Modeling of Urban Buildings From Range Data}
+
+\newcommand{\newchapt}[3]
+	{
+	\chapter{#1}
+ 	\chaptlabel{#2}
+    \markboth{\footnotesize C{\footnotesize HAPTER} \hspace{.3cm} \thechapter.  {#3}\hfill}{\footnotesize C{\scriptsize HAPTER} \thechapter. \hspace{.3cm} {#3}\hfill}
+ 	}
+
+\newcommand{\newappendix}[3]
+	{
+	\chapter{#1}
+ 	\chaptlabel{#2}
+    \markboth{\footnotesize A{\footnotesize PPENDIX} \hspace{.3cm} \thechapter.  {#3}\hfill}{\footnotesize A{\scriptsize PPENDIX} \thechapter. \hspace{.3cm} {#3}\hfill}
+ 	}
+
+\newcommand{\newbib}[3]
+	{
+	\chapter{#1}
+ 	\chaptlabel{#2}
+    \markboth{\footnotesize B{\footnotesize IBLIOGRAPHY} \hfill}{\footnotesize B{\scriptsize IBLIOGRAPHY} \hfill}
+ 	}
+
+
+\doublespace
+
+%===========================================================================
+%  THIS IS WHERE IT ALL BEGINS
+%===========================================================================
+%\markright{right head}
+\makeindex
+\begin{document}
+\ifall
+  %\include{ideas}
+  %\include{alg_bpa}
+  \pagenumbering{roman}
+  %\stepcounter{page}
+  \author{\theauthor}
+  \title{{\thetitle}}
+  \titlep         % defined in thesis.sty
+  \copyrightpage
+                % \copysignaturepage
+  \signaturepage
+  \abstractpage{abstract}
+                %\dedicationpage{Say something.}
+  \acknowledgepage{acknowledgements}
+%----------------------------------------------------------------------
+  \tableofcontents
+  \clearpage
+%  \addcontentsline{toc}{chapter}{\listtablename}
+  \listoftables
+  \clearpage
+%  \addcontentsline{toc}{chapter}{\listfigurename}
+  \listoffigures
+\fi
+
+% \publication{publications}
+%----------------------------------------------------------------------
+%   REMEMBER, THIS IS PROBABLY THE ONLY PART PEOPLE ACTUALLY READ!!
+%----------------------------------------------------------------------
+\clearpage
+\pagenumbering{arabic}
+\pagestyle{myheadings}
+\iffalse
+   \include{chapt1/chapt1}
+%   \include{chapt2/chapt2}
+%   \include{chapt3/chapt3}
+%   \include{chapt4/chapt4}
+%   \include{chapt5/chapt5}
+%   \include{chapt6/chapt6}
+%   \include{chapt7/chapt7}
+%   \include{chapt8/chapt8}
+%   \include{chapt9/chapt9}
+%   \include{chapt10/chapt10}
+\fi
+
+\ifall
+   \include{paper}
+\else
+   \include{working}
+\fi
+
+\ifall
+
+\appendix
+% Include appendices here.
+\include{appen1}
+\include{appen2}
+\include{appen3}
+\clearpage
+
+%%%\addcontentsline{toc}{chapter}{\bibname}
+%----------------------------------------------------------------------
+%   FINALLY, PUT HERE ALL RELEVANT BIB FILES
+%----------------------------------------------------------------------
+\addcontentsline{toc}{chapter}{Bibliography}
+\singlespace
+% fix the problem of footnote for bibliography
+\markboth{\footnotesize B{\footnotesize IBLIOGRAPHY} \hfill}{\footnotesize B{\scriptsize IBLIOGRAPHY} \hfill}
+\bibliographystyle{unsrt}
+\bibliography{thesis}
+
+\fi  % end of ifall
+
+%\include{vita}
+\printindex
+
+\end{document}

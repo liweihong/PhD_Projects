@@ -1,0 +1,66 @@
+\newappendix{Hough Space Plane Detection}{chapt_appen3}{Hough Space Plane Detection}
+\label{apdx:HSPD}
+
+The Hough transform was introduced to detect complex patterns 
+of points in binary images and became quickly a popular algorithm 
+to detect lines and simple curves.
+The key idea is to map a difficult pattern detection problem into a simple
+peak detection problem in the space of the parameters of the curve.
+The Hough transform has several attractive characteristics \cite{book_tv}.
+First, it is relatively robust to noise because 
+those outlier data points are unlikely to form consistently any geometry shapes, 
+and therefore vote to the same bins for a particular parameter.
+Second, it is able to compute multiple instances of a dataset in a single pass,
+which outperforms most of the pattern matching algorithms based on iteratively
+refinement process.
+
+The classical Hough transform \cite{Hough} for line detection in images is based on 
+the slope-intercept formulation of a line, i.e., $y = mx + c$, where $(x, y)$ 
+is a point on the line, $m$ is the slope and $c$ is the $y-$intercept. 
+The Hough transform proceeds by discretizing $m$ and $c$ and for each image point
+$p = (x_p, y_p)$, increasing all cells $i$ and $j$ which satisfy $c_i = y_p - m_jx_p$.
+The largest accumulator value in the Hough space gives the hypotheses for the line.
+However, there is a major weakness with this parameterization: 
+because the valid range of $m$ is from $-\infty$ to $+\infty$, 
+which cannot be properly discretized, 
+the detection gets much poorer as lines become vertical. 
+
+This problem for line detection can be solved by parameterizing the line 
+using polar coordinate representation, that is
+$xcos\theta + ysin\theta = r$. 
+Where $\theta$ is the angle of the normal direction with the $x-$axis 
+and $r$ is the perpendicular distance from the origin to the line.
+Using this formulation, the Hough space is still 2D but it does not have the discretization
+problem of the classical method described above since $0 \le \theta < \pi$.
+Consequently, this formulation enables the unbiased detection of vertical lines.
+
+The extension of the principle of classical Hough transform from 2D to 3D for 
+plane detection is quite straight-forward. 
+A plane is represented by its explicit equation $z = ax + by + c$,
+which indicates a 3D Hough space corresponding to $a, b$ and $c$.
+This extension suffers from the same problems as its 2D counter part, that is, 
+the near-vertical plane detection is hard to be detected reliably due to 
+unbounded range of parameters.
+
+The solution for unbiased planar detection in 3D is quite similar to the one for 2D.
+The plane is parameterized by its normal direction $\hat{\bf n} = (n_x, n_y, n_z)$ and
+its perpendicular distance from the origin $\rho$. 
+As there is a constraint on the magnitude of the normal of the plane,
+i.e., $||\hat{\bf n}|| = 1$, there are only three degrees of freedom left. 
+Because an unconstrained representation with the minimum number of 
+parameters is more efficient for the Hough transform, 
+one can use spherical coordinates of a unit sphere ($\theta, \phi$) 
+for representing the unit normal $\hat{\bf n}$.
+\begin{equation}
+\hat{\bf n} = (cos\theta sin\phi  \quad sin\theta sin\phi \quad cos\phi) 
+\qquad 0 \le \theta < 2\pi \quad 
+0 \le \phi \le \pi
+\end{equation}
+Hence, there are three parameters for 3D Hough space, which are $\theta, \phi$ and $\rho$. 
+Each given point ($x_p, y_p, z_p$) in the input point cloud votes for all bins 
+$\theta_i, \phi_j $ and $\rho_k$ which satisfy
+\begin{equation}
+\rho_k = x_pcos\theta_i sin\phi_j \; + \; y_psin\theta_isin\phi_j \; + \; z_pcos\phi_j
+\label{eq:ht_plane}
+\end{equation}
+

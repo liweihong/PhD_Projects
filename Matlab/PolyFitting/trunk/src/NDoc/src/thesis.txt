@@ -1,0 +1,62 @@
+File: Thesis Writing
+
+Group: Todo List
+:
+
+0 - Error Mapping generation smoothly using approach 3.
+1 - High Resolution of Hunter Theater model
+2 - Table for each model containg timing info
+3 - A binary that running through all model.
+4 - Big O analysis on algorithm
+5 - Thesis writing everyday
+6 - Debug Deviatio Mapping
+7 - Add Algorithms table in each small part, such as Adaptive HT, BPA, Curvature, HD.
+
+Group: Image Generationg
+Related to figure/table generation in the thesis writing.
+
+:
+*Figure of color face images:*
+:
+
+1. based on the building_toolbar plugins, manually choose the view.
+
+
+2. The images are obtained by PrntScrn, and then crop it using parameters
+   
+   starting point: 1572 x 1064 (not calibratable)
+   
+   size : 1320 x 932
+
+:
+*Figure of Error measurement images:*
+:
+
+1. based on the transformation of
+
+(begin code)
+   $instance.transform! Geom::Transformation.rotation [512, 200, 100], [1, 0, 0], 3.1415*0.05
+   $instance.transform! Geom::Transformation.rotation [512, 200, 0], [0, 0, 1], 3.1415*1.18
+   $instance.transform! Geom::Transformation.translation [-120, -280, 0]
+   $instance.transform! Geom::Transformation.scaling 0.5
+(end code)  
+
+2. The images are obtained by PrntScrn, and then crop it using parameters
+   
+   starting point: 230 x 1058
+   
+   size : 1314 x 922
+
+:
+*Figure of DXF images:*
+
+1. - The files of BPA_250_*.png were created from "My Documents"/BPA_250.dxf
+2. - The file BPA_250_top1.png was created from IR.dxf
+3. - 1222 x 526  (image size for top view)
+4. - 1238 x 946  (image size for front and back view)
+
+Group: Latex Usage
+The usage of Latex
+
+:
+*The spell checking is enable on Linux*

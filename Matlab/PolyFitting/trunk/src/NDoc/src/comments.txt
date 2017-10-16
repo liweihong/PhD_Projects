@@ -1,0 +1,60 @@
+File: Miscellaneous
+
+Group: Ideas
+
+Topic: Code glu for Matlab, c++, c, etc.
+
+Think Matlab code as a shell script.
+
+* include all kinds of code for algorithms, c/c++/java...
+* when a GUI needed, use Matlab to show the results.
+* use system() or !command to issue a command.
+* by doing this way, two prons: faster, and easy debugging; cons: not good for parameters passing. may use sscanf to pass the data through files.
+
+Topic: Read some survey papers?
+
+To gain the overview in this field
+* range data processing
+* building restruction
+* line fitting
+
+Topic: Resolution adjustment parameters
+
+sample density; non-linear(High SNR);
+
+* The density of sampling in vertical direction.
+* Using non-linear function, such as Bazier, instead of HT only
+
+Topic: 2D image geometry reconstruction
+
+For a particular layer, refer to its prevous and next layer to fitting lines.
+
+Topic: 3D reconstruction
+
+software package and cross-section
+
+* Use SketchUp or ETH paper <Buildings Modeling Papers>, to get its software package?
+
+* How about cross section, namely both horizontal and vertical layers.
+
+Topic: Noise removal & data recover
+
+Image enhancement based on symmetry line and adjacent layers
+
+Compute one symmetry line (e.g., x=261), and from adjacent layers to remove the noise for a particular layer.
+
+Group: To-do List
+
+Topic: Schedule next meeting.
+
+Send an email to George for meeting, discuss the following.
+
+* Possible publication in small conference.
+* project details.
+
+
+
+Group: Cencerns
+
+
+

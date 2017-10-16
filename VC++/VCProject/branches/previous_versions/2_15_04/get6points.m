@@ -1,0 +1,23 @@
+function coord = get6points(angle, dis, w, h)
+
+pi=3.1415926;
+ang1 = angle(1)*pi/180;
+ang2 = angle(2)*pi/180;
+ang3 = angle(3)*pi/180;
+ang4 = angle(4)*pi/180;
+m1 = [cos(ang1) sin(ang1); cos(ang2) sin(ang2)];
+m2 = [cos(ang2) sin(ang2); cos(ang3) sin(ang3)];
+m3 = [cos(ang3) sin(ang3); cos(ang4) sin(ang4)];
+m4 = [cos(ang4) sin(ang4); cos(ang1) sin(ang1)];
+m5 = [cos(ang1) sin(ang1); cos(ang3) sin(ang3)];
+m6 = [cos(ang2) sin(ang2); cos(ang4) sin(ang4)];
+diag = sqrt(w*w+h*h);
+distance = dis - diag/2;
+coord(1,:) = (inv(m1)*[distance(1); distance(2)])';
+coord(2,:) = (inv(m2)*[distance(2); distance(3)])';
+coord(3,:) = (inv(m3)*[distance(3); distance(4)])';
+coord(4,:) = (inv(m4)*[distance(4); distance(1)])';
+coord(5,:) = (inv(m5)*[distance(1); distance(3)])';
+coord(6,:) = (inv(m6)*[distance(2); distance(4)])';
+coord(:,1) = coord(:,1) + w/2;
+coord(:,2) = coord(:,2) + h/2;

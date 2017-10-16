@@ -1,0 +1,89 @@
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage[pdftex]{color,graphicx}
+\usepackage{verbatim}
+\usepackage{setspace}
+\usepackage{subfig}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%   TESTING  %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Error Measurement}
+
+The idea for doing error measurement is to measure the 2D error on each unique sliced
+image. Some key things need to be addressed:\newline
+
+
+1. The interface between C project and SketchUp rendering. \newline
+
+The C code should be able to output a file containing error number for each small piece of faces.
+The height of a face is the interval of slices (1/1000). The wide of a face is user-defined.
+Say ($w = 10$ pixels).
+
+The SU can first load the whole model. Then, for each height, reload the error faces on top of the
+SU model. The interface of this file could be \newline
+$Layer \; \#$ \newline
+$P1 \; P2 \; =>$ \newline
+$P1 \; PP_0 \; Value$ \newline
+$PP_0 \; PP_1 \; Value$ \newline 
+$\ldots$ \newline
+$PP_N \; P2 \; Value$ \newline 
+
+$P1 \; P2 \; =>$ will identify the segment, the following triple define the errors. All the points $PP_i$
+is on the same line \newline
+
+
+How about the tapered unit?
+
+For tapered unit, compute the errors on each sliced image, do the same but with different 
+vertices on the faces. \newline \newline
+
+2. How to measure the errors. \newline
+
+For each sliced image, compute a corresponding modeled sliced image. Superposition the 
+modeled on on the sliced one. 
+
+For implementation, we might be able to make use of HD computation.
+
+If a line segment is too short ( $Thres_1$ < 2-3 pixels? ), let's ignore it. Namely, do
+nothing on this line segment. (We assume this line segment is close enought to the real data)
+
+for each line segment $l$ in model sliced image $I_m$, and the user-defined face wide $w$,
+if $l > w$, we have to split the $l$ into pieces of $l_0, l_1, ..., l_N$, such that 
+$l_i < w$. Now, let's define an error computing window size, say $S = d$ and do dilation 
+for each $l_i$ with the iteration depth of $d$. 
+For each dilation, we should mark any data points touched by dilation and remove it. So that
+later on, other $l_j$ will not treat this point as its error data.
+
+Before dilation, we should remove those points $p_m$ in $l_i$ which reside on the data points.
+During the dilation, if for a point $p_m$ in $l_i$ touched a data point $p$, do the following: 
+First, we should remove this point $p_m$ from dilation. If the data point $p$ is not marked
+yet, mark it and add the error distance to the line. If $p$ is marked, do nothing.
+
+Problem - dilation is all directions? so may be multiple error computation? (make sense, since
+there are some data/noise near this line).
+
+Once the dilation is done, we will obtained accumulated error value $E_a$ for each $l_i$, 
+normalized this with $E_a/(L_{l_i} * 2d)$. \newline \newline \newline
+
+
+??? what if a thick error part like ledger part ???
+
+*. Get a global scale $I_S$ for all models with different resolution.
+
+*. Manually choose a scale? x
+
+*. Get the biggest error for the whole model as nomalized reference.
+
+*. Get the biggest error for a layer as nomalized reference.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

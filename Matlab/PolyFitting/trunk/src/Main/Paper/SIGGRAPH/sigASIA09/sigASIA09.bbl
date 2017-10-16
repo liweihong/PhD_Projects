@@ -1,0 +1,165 @@
+\begin{thebibliography}{\protect\citename{Akbarzadeh et~al\mbox{.} }2006}
+
+\bibitem[\protect\citename{Akbarzadeh et~al\mbox{.} }2006]{AKBARZADEH06}
+{\sc Akbarzadeh, A., Frahm, J.-M., Mordohai, P., Clipp, B., Engels, C., Gallup,
+  D., Merrell, P., Phelps, M., Sinha, S., Talton, B., Wang, L., Yang, Q.,
+  Stewenius, H., Yang, R., Welch, G., Towles, H., Nister, D., and Pollefeys,
+  M.}
+\newblock 2006.
+\newblock Towards urban {3D} reconstruction from video.
+\newblock {\em Proc. Symposium on 3D Data Processing, Visualization, and
+  Transmission (3DPVT'06)\/}, 1--8.
+
+\bibitem[\protect\citename{Aronov et~al\mbox{.} }2006]{DP_AAKMT}
+{\sc Aronov, B., Asano, T., Katoh, N., Mehlhorn, K., , and Tokuyama, T.}
+\newblock 2006.
+\newblock Polyline fitting of planar points under min-sum criteria.
+\newblock {\em International Journal of Computational Geometry and Applications
+  16\/}, 97--116.
+
+\bibitem[\protect\citename{Bernardini et~al\mbox{.} }1999]{BPA_BMRS}
+{\sc Bernardini, F., Mittlelman, J., Rushmeir, H., and Silva, C.}
+\newblock 1999.
+\newblock The ball-pivoting algorithm for surface reconstruction.
+\newblock {\em IEEE Transaction on Visualization and Computer Graphics 5\/},
+  349--359.
+
+\bibitem[\protect\citename{Brown }1992]{IR_Brown}
+{\sc Brown, L.}
+\newblock 1992.
+\newblock A survey of image registration techniques.
+\newblock {\em ACM Computing Surveys 24\/}, 326--376.
+
+\bibitem[\protect\citename{Castellani et~al\mbox{.} }2002]{RE_CLF}
+{\sc Castellani, U., Livatino, S., and Fisher, R.~B.}
+\newblock 2002.
+\newblock Improving environment modeling by edge occlusion surface completion.
+\newblock {\em Proc. Int. Symp. on 3D Data Processing Visualization and
+  Transmission (3DPVT)\/}, 672--675.
+
+\bibitem[\protect\citename{Cohen and Deschamps }2001]{RE_CD}
+{\sc Cohen, L.~D., and Deschamps, T.}
+\newblock 2001.
+\newblock Multiple contour finding and perceptual grouping using minimal paths.
+\newblock {\em Journal of Mathematical Imaging and Vision 14\/}, 225--236.
+
+\bibitem[\protect\citename{Douglas and Peucker }1973]{DP_DP}
+{\sc Douglas, D., and Peucker, T.}
+\newblock 1973.
+\newblock Algorithms for the reduction of the number of points required for
+  represent a digitzed line or its caricature.
+\newblock {\em Canadian Cartographer 10\/}, 112--122.
+
+\bibitem[\protect\citename{Fisher }2004]{RE_Fisher}
+{\sc Fisher, R.~B.}
+\newblock 2004.
+\newblock Applying knowledge to reverse engineering problems.
+\newblock {\em Computer-Aided Design 36\/}, 501--510.
+
+\bibitem[\protect\citename{Garland and Heckbert }1997]{BPA_GH}
+{\sc Garland, M., and Heckbert, P.}
+\newblock 1997.
+\newblock Surface simplification using quadric error metrics.
+\newblock {\em ACM SIGGRAPH\/}.
+
+\bibitem[\protect\citename{Hershberger and Snoeyink }1992]{DP_HS}
+{\sc Hershberger, J., and Snoeyink, J.}
+\newblock 1992.
+\newblock Speeding up the douglas-peucker line-simplification algorithm.
+\newblock {\em Proc. 5th International Symposium Spatial Data Handling\/},
+  134--143.
+
+\bibitem[\protect\citename{Hu et~al\mbox{.} }2006]{UM_HYN}
+{\sc Hu, J., You, S., and Neumann, U.}
+\newblock 2006.
+\newblock Integrating lidar, aerial image and ground images for complete urban
+  building modeling.
+\newblock {\em Proc. Symposium on 3D Data Processing, Visualization, and
+  Transmission (3DPVT'06)\/}, 184--191.
+
+\bibitem[\protect\citename{Leica }2001]{RDP_LRS}
+{\sc Leica}.
+\newblock 2001.
+\newblock Leica geosystems, http://hds.leica-geosystems.com/.
+
+\bibitem[\protect\citename{Liu and Stamos }2005]{RDP_LS}
+{\sc Liu, L., and Stamos, I.}
+\newblock 2005.
+\newblock Automatic {3D} to {2D} registration for the photorealistic rendering
+  of urban scenes.
+\newblock {\em IEEE Computer Vision and Pattern Recognition 2\/}, 137--143.
+
+\bibitem[\protect\citename{Liu et~al\mbox{.} }2006]{RDP_LSYGS}
+{\sc Liu, L., Stamos, I., Yu, G., G, Wolberg, and Zokai, S.}
+\newblock 2006.
+\newblock Multiview geometry for texture mapping {2D} images onto {3D} range
+  data.
+\newblock {\em IEEE Computer Vision and Pattern Recognition 2\/}, 2293--2300.
+
+\bibitem[\protect\citename{Mueller et~al\mbox{.} }2006]{PMB_MWH}
+{\sc Mueller, P., Wonka, P., Haegler, S., Ulmer, A., and Gool, L.~V.}
+\newblock 2006.
+\newblock Procedural modeling of buildings.
+\newblock {\em ACM Transactions on Graphics (TOG)\/}, 614--623.
+
+\bibitem[\protect\citename{Or et~al\mbox{.} }2005]{DP_OWYC}
+{\sc Or, S., Wong, K., Yu, Y., and Chang, M.}
+\newblock 2005.
+\newblock Highly automatic approach to architectural floorplan image
+  understanding and model generation.
+\newblock {\em Proc. Vison, Modeling, and Visualization\/}.
+
+\bibitem[\protect\citename{Parish and M\"{u}ller }2001]{PMB_PM}
+{\sc Parish, Y. I.~H., and M\"{u}ller, P.}
+\newblock 2001.
+\newblock Procedural modeling of cities.
+\newblock {\em ACM SIGGRAPH\/}, 301--308.
+
+\bibitem[\protect\citename{Podolak et~al\mbox{.} }2006]{Sym_PSGRF}
+{\sc Podolak, J., Shilane, P., Golovinskiy, A., Rusinkiewicz, S., and
+  Funkhouser, T.}
+\newblock 2006.
+\newblock A planar-reflective symmetry transform for {3D} shapes.
+\newblock {\em ACM SIGGRAPH\/}, 549--559.
+
+\bibitem[\protect\citename{Thompson et~al\mbox{.} }1999]{RE_TOGSH}
+{\sc Thompson, W., Owen, J., Germain, H.~J., Stark, S.~R., and Henderson,
+  T.~C.}
+\newblock 1999.
+\newblock Feature-based reverse engineering of mechanical parts.
+\newblock {\em IEEE Transactions on Robotics and Automation 15\/}.
+
+\bibitem[\protect\citename{Wonka et~al\mbox{.} }2003]{PMB_WWS}
+{\sc Wonka, P., Wimmer, M., Sillion, F., and Ribarsky, W.}
+\newblock 2003.
+\newblock Instant architecture.
+\newblock {\em ACM SIGGRAPH\/}, 669--677.
+
+\bibitem[\protect\citename{Xiao et~al\mbox{.} }2008]{UM_XFTQ}
+{\sc Xiao, J., Fang, T., Tan, P., Zhao, P., Ofek, E., and Quan, L.}
+\newblock 2008.
+\newblock Image-based facade modeling.
+\newblock {\em ACM SIGGRAPH Asia\/}.
+
+\bibitem[\protect\citename{Yin et~al\mbox{.} }2009]{YIN09}
+{\sc Yin, X., Wonka, P., and Razdan, A.}
+\newblock 2009.
+\newblock Generating {3D} building models from architectural drawings: A
+  survey.
+\newblock {\em IEEE Computer Graphics and Applications\/}, 20--30.
+
+\bibitem[\protect\citename{Zabrodsky et~al\mbox{.} }1995]{Sym_ZPA}
+{\sc Zabrodsky, H., Peleg, S., , and Avnir, D.}
+\newblock 1995.
+\newblock Symmetry as a continuous feature.
+\newblock {\em IEEE Pattern Analysis and Machine Intelligence 17\/}.
+
+\bibitem[\protect\citename{Zakhor and Frueh }2007]{UM_Zakhor}
+{\sc Zakhor, A., and Frueh, C.}
+\newblock 2007.
+\newblock Automatic {3D} modeling of cities with multimodal air and ground
+  sensors.
+\newblock {\em Multimodal Surveillance: Sensors, Algorithms, and Systems,
+  Artech House, Boston Chapter 15\/}.
+
+\end{thebibliography}

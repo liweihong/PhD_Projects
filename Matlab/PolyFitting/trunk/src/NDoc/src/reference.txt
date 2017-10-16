@@ -1,0 +1,91 @@
+File: Reference
+
+Topic: Other Bibligraphy
+
+For Paper Writing.
+
+<Digit Image Processing> - Equations
+
+<Computer Vision Textbook> - Hough Transform
+
+<OLD DIP by U Maryland> - Erosion and Dilation
+
+<Registration by Hunter C and CC> - Range data processing Suervey
+
+Topic: Range Data Analysis
+
+CUNY papers.
+
+<file:../../../Papers/Range Data Processing/Automatic 3D to 2D Registration for the Photorealistic Rendering of Urban Scenes.pdf>
+
+<file:../../../Papers/Range Data Processing/Multiview Geometry for Texture Mapping 2D Images Onto 3D Range Data.pdf>
+
+Topic: BPA Papers
+
+Ball-pivot papers.
+
+<file:../../../Papers/Ball-pivot Algorithm/The Ball-Pivoting Algorithm for Surface Reconstruction.pdf>
+
+<file:../../../Papers/Ball-pivot Algorithm/Restricted BPA Applying Bal Pivoting on the Plane.pdf>
+
+Topic: Reverse Engineering Papers
+
+CAD @National University of Singapore
+
+<file:../../../Papers/Reverse Engineering/Modelling cloud data using an adaptive slicing approach.pdf>
+
+<file:../../../Papers/Reverse Engineering/Application of Sweeping Techniques to Reverse Engeering.pdf>
+
+<file:../../../Papers/Reverse Engineering/Feature-Based Reverse Engineering of Machanical Parts.pdf>
+
+<file:../../../Papers/Reverse Engineering/Solving architectural modelling problems using knowledge.pdf>
+
+<file:../../../Papers/Reverse Engineering/Fitting curves and surfaces to point clouds in.pdf>
+
+<file:../../../Papers/Reverse Engineering/Improving Environment Modelling by Edge Occlusion Surface Completion.pdf>
+
+<file:../../../Papers/Reverse Engineering/Multiple Contour Finding and Perceptual Grouping as a.pdf>
+
+Topic: DP Papers
+
+VMV 2005@The Chinese University of Hong Kong
+
+<file:../../../Papers/Douglas-Peucker Algorithm/Highly Automatic Approach to Architectural Floorplan Image.pdf>
+
+<file:../../../Papers/Douglas-Peucker Algorithm/A non-self-intersection Douglas-Peucker Algorithm.pdf>
+
+<file:../../../Papers/Douglas-Peucker Algorithm/Contour-Based Surface Reconstruction using Implicit Curve.pdf>
+
+<file:../../../Papers/Douglas-Peucker Algorithm/Speeding Up the Douglas-Peucker Line-Simplification Algorithm.pdf>
+
+<file:../../../Papers/Douglas-Peucker Algorithm/Polyline Fitting of Planar Points under Min-Sum Criteria.pdf>
+
+Topic: Symmetry Papers
+
+SIGGRAPH 06 @Princeton
+
+<file:../../../Papers/Symmetry/A Planar-Refective Symmetry Transform for 3D Shapes.pdf>
+
+<file:../../../Papers/Symmetry/Symmetry as a continous feature.pdf>
+
+Cited Papers::
+<file:../../../Papers/Symmetry/A measure of symmetry based on shape similarity.pdf>
+
+<file:../../../Papers/Symmetry/Completion of occluded shapes using symmetry.pdf>
+
+<file:../../../Papers/Symmetry/Shape from Symmetry.pdf>
+
+Another SIGGRPAPH 06 @Stanford:
+
+<file:../../../Papers/Symmetry/Partial and Approximate Symmetry Detection for 3D Geometry.pdf>
+
+Topic: Buildings Modeling Papers
+
+SIGGRAPH 06 @ETH Zurich/Arizona State U
+
+<file:../../../Papers/Procedure Modeling Building/Procedural Modeling of Buildings.pdf>
+
+Cited Papers::
+<file:../../../Papers/Procedure Modeling Building/Instant Architecture.pdf>
+
+<file:../../../Papers/Procedure Modeling Building/Procedural Modeling of Cities.pdf>

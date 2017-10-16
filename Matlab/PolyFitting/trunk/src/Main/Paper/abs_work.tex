@@ -1,0 +1,152 @@
+\ifx\twocol\undefined
+\documentclass[12pt,letterpaper]{article}
+\newcommand{\twocol}{0}
+\else
+\documentclass[8pt,twocolumn,letterpaper]{article}  % TWO COLUMN VERSION
+\renewcommand{\twocol}{true}
+\fi
+
+\usepackage{amsmath}
+\usepackage[pdftex]{color,graphicx}
+\usepackage{verbatim}
+\usepackage{setspace}
+\usepackage{subfig}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{ifthen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%   GLOBAL SETTING  %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\onehalfspace
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%   ABSTRACT      %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Abstract}
+The state-of-the-art techniques for 3D modeling of range data are usually heavy-duty and
+suffer from large-scale datasets.
+This paper presents an efficient algorithm to reconstruct 3D models of urban buildings by
+making use of a \emph{prior} knowledge that buildings can be created through two basic
+operations, \emph{extrude} and \emph{taper}, on some fundamental geometry shapes.
+The range data is first projected into a series of 2D images from which
+key images representing the salient features are selected.
+The basic geometry shapes are then obtained from these raster key images via vectorization.
+Depends on the 3D characteristics, the final model is reconstructed by either
+extrude or taper operation on these basic shapes.
+The proposed algorithm is of multi-resolution, and even for a low resolution model,
+the sharpness of the raw data is preserved, which
+outperforms most of the existed approximation algorithms.
+The contribution of this work is that it combines the benefits of a \emph{prior} knowledge on
+urban buildings and the light-weight 2D image processing techniques for 3D modeling and therefore
+leads to an economical geometry compression approach on range data.
+This work can boost web-based 3D applications, including virtual city touring, online gaming, etc.
+The experimental results on both exterior and interior urban building datasets are presented to
+validate the proposed approach.
+
+\ifthenelse{\equal{\twocol}{true}}{
+%\newpage % TWO COLUMN VERSION
+}{
+\newpage % TWO COLUMN VERSION
+}
+\section{Practical Aspects and Timeline}
+
+In the processing of implementing the algorithm to obtain the preliminary results, we gained in-depth
+knowledge of the 3D tools and related programming language. The whole project consists of over 20000
+lines of C++ code and over 1000 lines of Ruby code of Google SketchUp plug-ins for model visualization.
+Based on the work has been done and this code base, we believe that the remaining research will
+progress fast and the dissertation defense will be in July 2009.
+
+The remaining research problems and the estimated timeline are listed in the following:
+\begin{enumerate}
+
+\item Investigate modeling of the tapered to a point geometry structure
+
+We have successfully infered the geometry structure of tapered to a line. As a further step, we will study
+how to infer the geometry structure of tapered to a point which appears frequently in Gothic architecture,
+like churches.
+Our plan is to first segment out the region dedicated to this special structure which will
+be then projected into a series of sliced images to be analyzed.
+This segmentation task can be done based on the connected components in the sliced 2D images.
+Unlike the tapered to a line, we are not able to infer this structure by inferring extruded
+structure from the orthogonal directions.
+However, a nice characteristic of this structure is that
+the sliced image will converge to a point, which is good clue for inference.
+Without loss of generality, we assume that the sliced images of this special structure
+can be vectorized by a closed polygon.
+Let $S_i$ and $S_j$ be two consecutive sliced images with $i < j$, that is, $S_i$
+has a smaller boundary than $S_j$. For this special structure, $S_i$ will be growing up
+to cover $S_j$ by iterative dilation operations. By doing this, we can quickly locate the
+bottom and top (a small region representing a point) slices of this special geometry
+structure and therefore reconstruct it based on these two slices.
+The difference between this structure and the structure of tapered to a line is whether
+$S_i$ and $S_j$ have any overlapping or shared parts or not, which is easy to check.
+
+The time needed to do this is about 2 weeks.
+One and a half weeks will be dedicated to infer the underline structure.
+The remaining time is used to create the model.
+
+\item Investigate modeling of the ``follow-me'' geometry structure
+
+This is a more complicated geometry structure compared to the tapered structure mentioned above.
+This type of structure exists when the underline geometry structure can be reconstructed by
+moving a basic geometry unit along a curve trajectory.
+Therefore we have to carry out a tracking computation to obtain the curve trajectory.
+To do this, we will first capture the base geometry unit from a projected 2D reference slice image $S_i$.
+This base geometry is a very important initial stage because it is used as a template $A$
+for the further tracking process.
+Alternatively, to make this more precise or reliable, we could also get the base geometry part
+of a reference image from user input.
+Once the template $A$ is defined, we can start the tracking from the reference image along
+two oppose directions, that is $i, i+1, \ldots$ and $i, i-1, \ldots$.
+Because of the dense projection, the template matching tracking process only need to search
+in a small local region.
+This tracking process ends when no pattern was found in the new sliced images, which means the
+boundary of this special structure is reached.
+
+The estimated time needed to do is about 2 weeks.
+One and a half weeks will be dedicated to the tracking of the base geometry
+and the remaining time is used to compute the final model from the tracking results.
+
+\item Performance evaluation with other techniques
+
+We will conduct more advanced performance evaluation on the proposed approach, especially the
+comparison on state-of-the-art techniques.
+First of all, we will carry out the comparison on the high resolution models
+generated with our proposed method and those generated by using ball-pivot algorithm.
+The BPA is a very efficient algorithm and can generate precise models from range data with
+a small ball radius.
+To do the comparison, the number of faces or triangles in these high resolution models
+from both methods will be approximately the same level.
+The metric for comparison will include both objective and subjective criteria. The objective
+comparison will measure the errors between the models and the raw range data.
+And a subjective measurement will rely on sharpness of the models for the visualization.
+On the other hand, we will also carry out the comparison on the low resolution models
+generated by our methods and others, such as qslim approach.
+The same comparison metrics used for high resolution models will be used here.
+
+The estimated time for this is 2 weeks.
+One week is needed to download and run others tools, such as qslim.
+And another week is used to conduct the comparisons.
+
+\item Carry out experiments on more complicated datasets
+
+Currently we have only applied the proposed approach on one set of range data, which is a
+exterior scanning of the buildings.
+In order to test the effectivity and reliability the proposed algorithm,
+we will carry out the experiments on more complicated point cloud datasets, such as
+interior scanning of a large hall, where more sophisticated structures exist.
+Roughly we will try the proposed approach on about half dozen of large-scale datasets to
+validate our techniques.
+
+The estimated time for this work is about 3 weeks.
+The dataset may not be the same size but on average two datasets will be processed in each week.
+
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

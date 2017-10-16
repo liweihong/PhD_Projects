@@ -1,0 +1,77 @@
+\begin{thebibliography}{10}
+
+\bibitem{PMB_MWH}
+Mueller, P., Wonka, P., Haegler, S., Ulmer, A., Gool, L.V.:
+\newblock Procedural modeling of buildings.
+\newblock ACM Transactions on Graphics (TOG) (2006)  614--623
+
+\bibitem{PMB_WWS}
+Wonka, P., Wimmer, M., Sillion, F., Ribarsky, W.:
+\newblock Instant architecture.
+\newblock ACM SIGGRAPH (2003)  669--677
+
+\bibitem{RE_Fisher}
+Fisher, R.B.:
+\newblock Applying knowledge to reverse engineering problems.
+\newblock Computer-Aided Design \textbf{36} (2004)  501--510
+
+\bibitem{RE_TOGSH}
+Thompson, W., Owen, J., Germain, H.J., Stark, S.R., Henderson, T.C.:
+\newblock Feature-based reverse engineering of mechanical parts.
+\newblock IEEE Transactions on Robotics and Automation \textbf{15} (1999)
+
+\bibitem{MIR_FJS}
+Sigworth, F.J.:
+\newblock A maximum-likelihood approach to single-particle image refinement.
+\newblock Journal of Structual Biology (1998)  328--339
+
+\bibitem{IR_Brown}
+Brown, L.:
+\newblock A survey of image registration techniques.
+\newblock ACM Computing Surveys \textbf{24} (1992)  326--376
+
+\bibitem{RDP_LRS}
+Geosystems, L.:
+\newblock http://hds.leica-geosystems.com/
+
+\bibitem{RDP_LS}
+
+
+\bibitem{Sym_PSGRF}
+Podolak, J., Shilane, P., Golovinskiy, A., Rusinkiewicz, S., Funkhouser, T.:
+\newblock A planar-reflective symmetry transform for 3d shapes.
+\newblock Proceedings of ACM SIGGRAPH (2006)  549--559
+
+\bibitem{Sym_ZPA}
+Zabrodsky, H., Peleg, S., , Avnir, D.:
+\newblock Symmetry as a continuous feature.
+\newblock IEEE Pattern Analysis and Machine Intelligence \textbf{17} (1995)
+
+\bibitem{RDP_LSYGS}
+
+
+\bibitem{DP_AAKMT}
+Aronov, B., Asano, T., Katoh, N., Mehlhorn, K., , Tokuyama, T.:
+\newblock Polyline fitting of planar points under min-sum criteria.
+\newblock International Journal of Computational Geometry and Applications
+  \textbf{16} (2006)  97--116
+
+\bibitem{DP_DP}
+Douglas, D., Peucker, T.:
+\newblock Algorithms for the reduction of the number of points required for
+  represent a digitzed line or its caricature.
+\newblock Canadian Cartographer \textbf{10} (1973)  112--122
+
+\bibitem{DP_HS}
+Hershberge, J., Snoeyink, J.:
+\newblock Speeding up the douglas-peucker line-simplification algorithm.
+\newblock Proceedings of 5th International Symposium Spatial Data Handling
+  (1992)  134--143
+
+\bibitem{BPA_BMRS}
+Bernardini, F., Mittlelman, J., Rushmeir, H., Silva, C.:
+\newblock The ball-pivoting algorithm for surface reconstruction.
+\newblock IEEE Transaction on Visualization and Computer Graphics \textbf{5}
+  (1999)  349--359
+
+\end{thebibliography}

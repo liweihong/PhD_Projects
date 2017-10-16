@@ -1,0 +1,56 @@
+\newappendix{Mathematical Morphology}{chapt_appen2}{Mathematical Morphology}
+\label{apdx:mm}
+
+In this appendix, the basic morphological operations on binary image 
+used in the project are described.
+The morphological operations are conducted on set, including 
+the binary image $A$, and the structuring element $B$.
+$A$ and $B$ are defined on a 2D Cartesian grid, where the 1's are the
+elements of those sets. 
+We denote by $B_{xy}$ the structuring element after it has been translated
+so that its origin is located at the point $(x, y)$. 
+The output of a morphological operation is another set.
+%%The basic morphological operations are dilation and erosion, 
+%%as shown in \Fig{xxx}.
+
+\begin{enumerate}
+
+\item {\bf Dilation}
+
+The dilation operation of $A$ by the structuring element $B$ is defined by:
+
+$ D = A \oplus B = \{(x, y)|A \cap B_{xy} \neq \varnothing\}$
+
+Namely, the output binary image $D$ of the dilating $A$ by structuring 
+element $B$ is the set of points $(x, y)$ such that if $B$ is translated
+to the origin $(x, y)$, its intersection with $A$ is not empty. 
+
+Essentially, simple dilation (3x3 kernel of $B$) is the process of 
+incorporating into the object all the background points that touch it,
+leaving it larger in area by one pixel all around its perimeter.
+If the object is circular, its diameter increases by two pixels with each dilation.
+If two objects are separated by less than 3 pixels at any point, 
+they will become connected at that point. 
+Therefore, dilation is useful for filling holes in segmented objects.
+
+\item {\bf Erosion}
+
+The erosion operation of $A$ by the structuring element $B$ is defined by:
+
+$ E = A \ominus B = \{(x, y)|B_{xy} \subseteq  A\}$
+
+Namely, the output binary image $E$ of the eroding $A$ by structuring
+element $B$ is the set of points $(x, y)$ such that if $B$ is translated
+to the origin $(x, y)$, it is completely contained within $A$.
+
+Essentially, simple erosion (3x3 kernel of $B$) is the process of 
+eliminating all the boundary points from an object,
+leaving it smaller in area by one pixel all around its perimeter.
+If the object is circular, its diameter decreases by two pixels with each erosion.
+If it narrows to less than 3 pixels thick at any point, 
+it will become disconnected at that point. 
+Objects with no more than two pixels thick in any direction are eliminated.
+Therefore, erosion is useful for removing from a segmented image objects
+that are too small to be of interest, such as those noise or outlier data.
+
+\end{enumerate}

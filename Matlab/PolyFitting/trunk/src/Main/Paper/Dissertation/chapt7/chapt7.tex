@@ -1,0 +1,190 @@
+\newchapt{Algorithm Analysis}{chapt7}{Algorithm Analysis}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%  Algorithm Analsysis  %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Algorithm Analysis}
+\label{sec:PE_AA}
+
+\begin{algorithm}
+\caption{The Adaptive Hough Transform Algorithm}
+\label{alg.AHT}
+\begin{algorithmic}[1]
+\Procedure {AHTA}{$I$, $\boldsymbol{L}$}
+\While {$true$}
+\State $\bigcup{(\rho, \theta)} \leftarrow HT (I)$  \Comment{regular hough transform to get a set of lines}
+\State $n \leftarrow 0 $
+\For {each $(\rho, \theta) \in \bigcup{(\rho, \theta)} $}
+     \State $c \leftarrow num(I, \rho, \theta)$  \Comment{compute \# of points falling onto line ($\rho, \theta$)}
+     \If {$n < c$}
+         \State $n \leftarrow c$
+         \State $\rho_{max} \leftarrow \rho$
+         \State $\theta_{max} \leftarrow \theta$
+     \EndIf
+\EndFor
+\If {$n > \epsilon $}   \Comment{ sanity check for the line ($\rho_{max}, \theta_{max}$) }
+\State $\boldsymbol{L} \leftarrow (\rho_{max}, \theta_{max})$
+\State $update(I, \rho_{max}, \theta_{max})$ \Comment{ remove points falling onto line ($\rho_{max}, \theta_{max}$)}
+\Else
+\State $break$
+\EndIf
+\If {$\omega(I) < \epsilon$} \Comment{ check how many points left }
+\State $break$
+\EndIf
+\EndWhile
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+The Adaptive Hough Transform (AHT) algorithm stems from the original Hough transform algorithm.
+The function $HT()$ is just a regular Hough Transform (HT), which is $O(L)$ for line detection. 
+Here $L$ is the data point in 2D image.  The computation of the number of points covered by 
+each line  ($\rho, \theta$) detected by $HT$ is of $O(L)$ complexity.
+The sanity check and image update function $update()$ is most of query and comparison operation, which is
+$O(1)$ complexity. Because we are dealing with bounded number of data points, and the data points
+on the longest line of each iteration are removed for each iteration, the AHT will quickly converge.
+Because the 3D point cloud data has been projected to 2D image, the worst case for 3D data points is
+$O(N)$, where $N$ is the total number of 3D points.
+
+The space complexity of AHT algorithm is bounded by the space complexity of the $HT()$ algorithm. 
+Because we are only working on line detection of 2D images, the space complexity is $O(N_\rho * N_\theta)$, 
+where $N_\rho$ and $N_\theta$ represents the number of bins for quantizing the value of $\rho$
+and $\theta$ respectively. For example, for a image of size 300x400, if we quantize the length $\rho$
+with one bin for each pixel, the $N_\rho$ would be 500. Also, if we quantize the the angle with one
+bin for a degree, the $N_\theta$ would be 180. Based on this, the space complexity for this example 
+can be easily obtained. The precise of the Hough transform algorithm is depend on the quantization 
+of the parameters $\rho$ and $\theta$. The more bins are used for quantization, the more precise the
+results will be, which implies more space are needed for the algorithm.
+
+
+\begin{algorithm}
+\caption{The 2D Adaptive Ball-Pivot Algorithm}
+\label{alg.ABPA}
+\begin{algorithmic}[1]
+\Procedure {ABPA}{$I$, $\boldsymbol{L}$}
+\State $L \leftarrow \emptyset$
+\State $P, P_0 \leftarrow S(I) $ \Comment{compute the $seed$ point assigned to $P$ and $P_0$}
+\State $r \leftarrow W$ \Comment{initialize radius $r$ with a large value $W$}
+\While {$true$}  \Comment{inital BPA stage}
+   \State $append(L, P)$ 
+   \State $P_i \leftarrow BPA(P, I, r)$ \Comment{regular 2D BPA}
+   \If { $P_i = P_0 $ } 
+      \State $break$ \Comment { complete the initial BPA }
+   \EndIf
+   \State $P \leftarrow P_i$ \Comment { find a new vertex $P$ for the contour $L$}
+\EndWhile
+
+\State $r \leftarrow W'$ \Comment{a smaller radius $W'$ for refinement}
+\While {$r > \epsilon$} \Comment {iterative BPA refinement}
+   \For { each line $\overline{P_iP_j} \in \boldsymbol{L} $}
+      \State $L' \leftarrow \emptyset$
+      \State $P \leftarrow P_i$
+      \While {$true$}
+         \State $append(L', P)$ \Comment{construct a sub contour $L'$}
+         \State $P_k \leftarrow BPA(P, I, r)$ 
+	 \If { $P_k = P_j $ } \Comment{stop when reaching the other point}
+	    \State $substitute(L, P_i, P_j, L')$ \Comment{refine $\overline{P_iP_j}$ with $L'$}
+	    \State $break$
+	 \ElsIf { $isGap(L', P_k)$ }  \Comment{stop when reaching a gap}
+	    \State $break$
+	 \EndIf
+	 \State $P \leftarrow P_k$ \Comment { find a new vertex $P$ for $L'$}
+      \EndWhile
+   \EndFor
+   \State $r \leftarrow r/2$  \Comment{reduce the radius for next iteration}
+\EndWhile
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+The 2D adaptive ball-pivot algorithm (ABPA) is summarized in Algorithm \ref{alg.ABPA}. 
+The seed computation $S()$ is to randomly pick up a good starting point, which
+is only $O(1)$ complexity. The $append()$ function is to concatenate the control 
+points, which is only $O(1)$ complexity. The regular 2D ball-pivot algorithm, $BPA()$,
+carries out the geometry computation on each control point based on the size of the
+radius of the ball or circle. Basically, for each pivoting of the ball, the area 
+in the image covered by this pivoting is checked. If there is a data point contained
+by this area, the pivoting ends for this control point. 
+The complexity for computing the whole potential pivoting area is $O(n)$???, the
+complexity to pick up the mininue angle of the pivoting is $O(1)$, therefore, the 
+complexity for the whole 2D $BPA()$ is $O(n)$. 
+
+For the refinement process, each line $\overline{P_iP_j}$ of the boundary generated
+in the previous iteration is checked using the same algorithm in $BPA()$. This only
+takes $O(n)$ complexity. The $substitute()$ and $isGap()$ function is just to insert
+a extra point or a simple algebra computation, the complexity for both operations is 
+$O(1)$, Because the round of the refinement process is bounded by a predefined constant 
+number, say $c$, the complexity of this refinement is also bounded by $O(c*n) = O(n)$. 
+
+The implementation of the ABPA uses O(m) memory space, where m is the size of the 2D image.
+This complexity includes the enque/dequue the control points of the boundary, the 
+pivoting geomerty computation and the $substittue()$ and $isGap()$ computations. Since
+the user can control the size of slices, memory requirements can be tailored to the
+available hardware. 
+
+\begin{algorithm}
+\caption{The Keyslice Detection Algorithm}
+\label{alg.KSD}
+\begin{algorithmic}[1]
+\Procedure {Hausdorff}{$I$, $N$}
+  \State $K \leftarrow \emptyset$  \Comment{vector to store the indices of keyslices}
+  \State $I_r \leftarrow I_0$
+  \For { $i \leftarrow 1, N-1 $}
+    \State $d_1 \leftarrow dis(I_r, I_i) $
+    \State $d_2 \leftarrow dis(I_i, I_r) $
+    \State $d_{HD} \leftarrow avg(d_1, d_2) $ \Comment {average Hausdorff distance}
+    \If { $d_{HD} > \epsilon $}
+       \State $I_r \leftarrow I_i$  \Comment{update the reference image}
+       \State $ append(K, i) $
+    \EndIf
+  \EndFor
+  \State \textbf{return} $K$
+\EndProcedure
+
+\Procedure {Curvature}{$I$, $N$}
+  \State $K \leftarrow \emptyset$  \Comment{vector to store the indices of keyslices}
+  \State $V \leftarrow 0$ \Comment {initialize the counter to 0}
+  \For { $i \leftarrow 0, N-1 $}
+     \State $\bigcup{C} \leftarrow curv(I_i)$ \Comment{curvature computation on image $I_i$}
+     \State $\bigcup{c} \leftarrow mapping(\bigcup{C}) $ \Comment{mapping the curvature to indices}
+     \For {each $c \in \bigcup{c}$ }
+        \State $V(c) \leftarrow V(c) + 1$ \Comment{increase the number of curvature observed}
+     \EndFor
+  \EndFor
+  \For { each $c \in \bigcup{c}$ }
+     \If { $V(c) > \epsilon $}  \Comment {validate the curvatures}
+	\State $append(K, c)$
+     \EndIf
+  \EndFor
+  \State \textbf{return} $K$
+\EndProcedure
+
+\Procedure {KSDA}{$I$, $S$}
+\State $K_1 \leftarrow Hausdorff(I, S)$ \Comment{keyslices computed by Hausdorff distance}
+\State $K_2 \leftarrow Curvature(I, S)$ \Comment{keyslices computed by Curvature}
+\State $K \leftarrow merge(K_1, K_2)$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+The idea of keyslice detection is described in Algorithm \ref{alg.KSD}. 
+Essentailly, the algorithm consists of two independent procedures. 
+The function $Hausdorff()$ is conducting Hausdorff distance based keyslice
+detection. A lookup table $t$ is created for the implementation of $Hausdorff()$. 
+This lookup table is created by computing for each pixel $p$ in the reference image $I_r$,
+how far is $p$ to the nearest data point. If $p$ iteself is a data point, the distance is 0.
+The complexity of constructing $t$ bounded by $O(w*h)$, where $w$ and $h$ are the image
+width and height respectively. Once $t$ is computed, the function $dis()$ is only
+$O(1)$ complexity which basically doing queuing from $t$. Therefore, the function $Hausdorff()$
+takes $O(n)$ complexity. 
+For procedure $Curvature()$, the function $curv()$ which computes curvatures
+in the orthogonal direction is of $O(n)$ complexity. The $mapping()$ funciton and
+the remaining steps mainly consists of couple of algebra computation, which takes $O(1)$ complexity. 
+Therefore the procedure $Curvature()$ is of $O(n)$. Overall, the algorithm $KSDA()$ takes
+$O(n)$ computation complexity for keyslice detection. 
+
+For the space complexity, the keyslice detection algorithm is similar to adaptive ball-pivot
+algorithm and uses $O(m)$ memory for computation. Again, the memory usage can be tailored to 
+available hardware based on user settings.
+
+

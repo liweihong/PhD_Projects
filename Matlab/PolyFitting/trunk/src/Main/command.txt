@@ -1,0 +1,69 @@
+..\..\..\project -B side1_fi_image_slice_0802_0828_p1.png -L param.ini 
+// get the wall boundary
+
+// generate two set of data: side1 and side2
+
+// for side1
+..\..\..\Project.exe -j -O "-p ./ -P IR_face1.txt -t 13 -w 111 -a 1 -A global_init_side1_fi_image_slice_0802_0828_p1.txt -b 1024 -B 1024 -a 2 -A global_init_side1_lr_image_slice_0906_0973_p1.txt -b 1024 -B 1024 -x 6.792885 -X 73.221588 -y -1.625575 -Y 46.891933 -z -71.884407 -Z -17.477551 -M 2"
+..\..\..\project -j -F IR_face1.txt -f IR_face1_out.txt -O "-p IR_face1.txt -P trans.txt -t 14 -w 111"
+
+// for side2
+..\..\..\Project.exe -j -O "-p ./ -P IR_face2.txt -t 13 -w 111 -a 1 -A global_init_side2_fi_image_slice_0951_0978_p1.txt -b 1024 -B 1024 -a 2 -A global_init_side2_lr_image_slice_0064_0090_p1.txt -b 1024 -B 1024 -x 21.611092 -X 88.930023 -y -1.652020 -Y 46.889507 -z 1.122408 -Z 47.802963 -M 2 -i 0"
+
+// do zippering on the combined file IR_all.txt
+..\..\..\Project.exe -K -O "-A 6 -P IR_combined.txt -O ./IR_all.txt -B 1.74"
+
+
+// compute common ledger
+..\..\..\Project.exe -F common_ledger.txt -f common_z.txt -T 
+..\..\..\Project.exe -j -O "-p ./ -P IR_comm.txt -t 13 -w 111 -a 1 -A common_z_updated.txt -b 1024 -B 1024 -x 6.792885 -X 73.221588 -y -1.625575 -Y 46.891933 -z -71.884407 -Z -17.477551 -M 2"
+..\..\..\Project.exe -j -O "-p ./ -P IR_comm1.txt -t 13 -w 111 -a 2 -A common_z_updated.txt -b 1024 -B 1024 -x 6.792885 -X 73.221588 -y -1.625575 -Y 46.891933 -z -71.884407 -Z -17.477551 -M 2"
+..\..\..\Project.exe -F IR_comm_updated.txt -f common_zzz.txt -T 
+
+
+///////////////////////////////////////////
+// commands to get the windows/doors
+..\..\..\project -L param.ini -B side2_lr_image_slice_0034_0048_p2.png
+// BPA to get boundary.
+
+..\..\..\Project.exe -K -O "-A 5 -P ./ -O ./ -D side2_lr_image_slice_0034_0048_p2.png -b 6  -r 2 -L 34 -R 48"  
+// here, we could try -L 813 -R 796 to reverse the extrusion direction.
+
+..\..\..\Project.exe -q -F test_ir.txt -f test.png -W 1024 -w 1024 
+// test the generated windows and doors.
+
+..\..\..\Project.exe -j -O "-p ./ -P IR_face1.txt -t 13 -w 111 -a 2 -A test_ir.txt -b 1024 -B 1024 -x 21.611092 -X 88.930023 -y -1.652020 -Y 46.889507 -z 1.122408 -Z 47.802963 -M 2 -i 0"
+// convert the 2D coords to 3D coords
+
+// ..\..\..\project -j -F IR_face1.txt -f IR_face1_out.txt -O "-p IR_face1.txt -P trans.txt -t 14 -w 111"
+// transform the side1 to coordinates of side2 ???? shouldn't it be side2->side1?
+
+////////////////////////////////////////////
+// command to generate 3D point cloud
+project -j -f wei.txt -O "-p IR_all_faces.txt -P sample.txt -t 15 -w 111 -A 2 -o 0/1"  
+-o 0: grid points 1: random points
+project -j -O "-t 0 -w 111 -p sample.txt -P xxx" 
+
+
+////////////////////////////////////////////
+// command to slice the 3D point cloud
+// transform the data based on Inverse matrix MM in trans.txt
+// project -j -f IR_out.txt -O "-p sample.txt -P trans.txt -t 14 -w 111" 
+project -n -F sample.txt -f sample_trans.ptx -O "-s 0" 
+
+// get the bounding box:
+project -l sample_trans.ptx
+// -x -397.742096 -X 219.194138 -y -728.968811 -Y 817.882935 -z -21.653564 -Z 1053.429810
+
+..\..\project -l sampling_trans.ptx -O "-s 100 -p side1 -w 640 -h 1024 -d 2 -x -397.742096 -X 219.194138 -y -728.968811 -Y 817.882935 -z -21.653564 -Z 1053.429810 -t 1" 
+// for example, -d 1 - bottom-up
+
+
+//////////////////////// Synthetic Data /////////////////////
+1. simple - treat the whole data as roof, no segmentation.
+            make the window pasting work for extrusion from face-sides, instead of bottom-up
+2. 2spitak - enlarge bottom-up by 30% for including all intersection points of the boundary lines.
+             do segmentation.
+
+
+

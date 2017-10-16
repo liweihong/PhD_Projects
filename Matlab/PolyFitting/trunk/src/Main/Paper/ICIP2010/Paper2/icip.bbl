@@ -1,0 +1,52 @@
+\begin{thebibliography}{1}
+
+\bibitem{DP_RP}
+I.~Reyer and M.~Petrovtseva,
+\newblock ``System of vectorization of binary images,''
+\newblock {\em Pattern Recognition and Image Analysis}, vol. 17, pp. 204--210,
+  2007.
+
+\bibitem{DP_LC}
+Wen-Jan~Chen Shih-Chang~Liang,
+\newblock ``Extraction of line feature in binary images,''
+\newblock {\em IEICE Transactions on Fundamentals of Electronics,
+  Communications and Computer Sciences}, vol. E91-A, pp. 1890--1897, 2008.
+
+\bibitem{DP_AAKMT}
+B.~Aronov, T.~Asano, N.~Katoh, K.~Mehlhorn, , and T.~Tokuyama,
+\newblock ``Polyline fitting of planar points under min-sum criteria,''
+\newblock {\em International Journal of Computational Geometry and
+  Applications}, vol. 16, pp. 97--116, 2006.
+
+\bibitem{DP_DP}
+D.~Douglas and T.~Peucker,
+\newblock ``Algorithms for the reduction of the number of points required for
+  represent a digitzed line or its caricature,''
+\newblock {\em Canadian Cartographer}, vol. 10, pp. 112--122, 1973.
+
+\bibitem{DP_HS}
+J.~Hershberger and J.~Snoeyink,
+\newblock ``Speeding up the douglas-peucker line-simplification algorithm,''
+\newblock {\em Proc. 5th International Symposium Spatial Data Handling}, pp.
+  134--143, 1992.
+
+\bibitem{DP_HS94}
+J.~Hershberger and J.~Snoeyink,
+\newblock ``An o(nlogn) implementation of the douglas-peucker algorithm for
+  line simplification,''
+\newblock {\em Proceedings of the tenth annual symposium on Computational
+  geometry}, pp. 383--384, 1994.
+
+\bibitem{DP_AV}
+P.~K. Agarwal1 and K.~R. Varadarajan2,
+\newblock ``Efficient algorithms for approximating polygonal chains,''
+\newblock {\em Discrete and Comptational Geometry}, vol. 23, pp. 273--291,
+  2000.
+
+\bibitem{BPA_BMRS}
+F.~Bernardini, J.~Mittlelman, H.~Rushmeir, and C.~Silva,
+\newblock ``The ball-pivoting algorithm for surface reconstruction,''
+\newblock {\em IEEE Transaction on Visualization and Computer Graphics}, vol.
+  5, pp. 349--359, 1999.
+
+\end{thebibliography}

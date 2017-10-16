@@ -1,0 +1,419 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%                                                          %%%%%%%%
+%%%%%%%%            Revised in September, 2009                    %%%%%%%%
+%%%%%%%%                                                          %%%%%%%%
+%%%%%%%%                                                          %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\brokenpenalty=10000
+
+\newfont{\arial}{phvr8t at 12pt}
+\newfont{\arialit}{phvro8t at 12pt}
+\newfont{\arialbf}{phvb8t at 12pt}
+\newfont{\arbf}{phvb8t at 18pt}
+\newfont{\annotate}{phvr8t at 8pt}
+
+\def\cl@chapter{\@elt{section}\@elt{footnote}}
+\def\thefigure{\@arabic\c@figure}
+\def\thetable{\@arabic\c@table}
+\def\theequation{\arabic{equation}}
+
+\def\@xfloat#1[#2]{\ifhmode \@bsphack\@floatpenalty -\@Mii\else
+   \@floatpenalty-\@Miii\fi\def\@captype{#1}\ifinner
+      \@parmoderr\@floatpenalty\z@
+    \else\@next\@currbox\@freelist{\@tempcnta\csname ftype@#1\endcsname
+       \multiply\@tempcnta\@xxxii\advance\@tempcnta\sixt@@n
+       \@tfor \@tempa :=#2\do
+                        {\if\@tempa h\advance\@tempcnta \@ne\fi
+                         \if\@tempa t\advance\@tempcnta \tw@\fi
+                         \if\@tempa b\advance\@tempcnta 4\relax\fi
+                         \if\@tempa p\advance\@tempcnta 8\relax\fi
+         }\global\count\@currbox\@tempcnta}\@fltovf\fi
+    \global\setbox\@currbox\vbox\bgroup
+    \def\baselinestretch{1}\@normalsize
+    \boxmaxdepth\z@
+    \hsize\columnwidth \@parboxrestore}
+\long\def\@footnotetext#1{\insert\footins{\def\baselinestretch{1}\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore
+   \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
+    {\rule{\z@}{\footnotesep}\ignorespaces
+      #1\strut}}}
+
+
+\def\dept#1{\gdef\@dept{#1}}
+\def\principaladviser#1{\gdef\@principaladviser{#1}}
+\def\advis@r{Advisor}
+\def\principaladvisor#1{\gdef\@principaladviser{#1}\gdef\advis@r{Advisor}}
+\def\shortname#1{\gdef\@shortname{#1}}
+\def\fourthreader#1{\gdef\@fourthreader{#1}}
+\def\fifthreader#1{\gdef\@fifthreader{#1}}
+\def\advisor#1{\gdef\@advisor{#1}}
+\def\executive#1{\gdef\@executive{#1}}
+\def\thetitle#1{\gdef\@thetitle{#1}}
+\def\theauthor#1{\gdef\@theauthor{#1}}
+\def\submitdate#1{\gdef\@submitdate{#1}}
+\def\copyrightyear#1{\gdef\@copyrightyear{#1}} % \author, \title in report
+\def\@dept{Computer Science}
+\def\@univ{The City University of New York}
+\def\@degree{Doctor of Philosophy}
+\def\@principaladviser{}\def\@firstreader{}\def\@secondreader{}
+\def\@thirdreader{}\def\@fourthreader{}\def\@fifthreader{}
+\def\@submitdate{\ifcase\the\month\or
+  January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or December\fi
+  \space \number\the\year}
+\ifnum\month=12
+    \@tempcnta=\year \advance\@tempcnta by 0
+    \edef\@copyrightyear{\number\the\@tempcnta}
+\else
+    \def\@copyrightyear{\number\the\year}
+\fi
+\newif\ifcopyright \newif\iffigurespage \newif\iftablespage \newif\ifsignature
+\newif\iffiveincommittee \newif\ifsixincommittee \newif\umiabstract
+\figurespagetrue \tablespagetrue
+
+
+\def\titlep{
+  \thispagestyle{empty}%
+    \begin{center}
+        {\uppercase\expandafter{\@thetitle}}
+    \end{center}
+    \vspace{.1in}
+    \begin{center}
+        by \\
+    \vspace{.4in}
+        {\uppercase\expandafter{\@theauthor}}
+    \end{center}
+    \vfill
+    \vfill
+    \begin{center}
+    \vspace{.4in}
+	A dissertation submitted to the Graduate Faculty in Computer Science
+	in partial fulfillment of the requirements for the degree of {\@degree}, \\
+                \@univ\\
+    \end{center}
+    \begin{center}
+        {\arialbf \@submitdate}
+    \end{center}
+    \clearpage}
+
+\def\copyrightpage{%
+    \thispagestyle{plain}
+    \begin{center}
+      \vspace{1.8in}
+    \end{center}
+    \vfill
+    \vfill
+        \begin{center}
+                \copyright\ 2011 \\
+%                \copyright\ \@copyrightyear\ \\
+                {\arialbf \@theauthor} \\
+		All Right Reserved
+        \end{center}
+        %\vfill
+        \clearpage}
+
+
+\def\dedicationpage#1{%
+        \thispagestyle{empty}%
+        \null\vspace{1in}
+        \begin{center}
+              { \large\it #1}
+        \end{center}
+        \vfill
+        \clearpage}
+
+
+\long\def\signature#1{%
+        \begin{center}
+        \begin{minipage}{4.6in}
+        {\shortstack{#1}}
+	\vspace{0.1in}
+        \end{minipage}
+        \begin{minipage}{4.6in}
+	\vspace{0.1in}
+        {\shortstack{\vrule width 3.5in height 0.6pt}}
+        \end{minipage}
+	\end{center}
+}
+
+
+\def\signaturepage{
+        \thispagestyle{plain}
+        \begin{center}
+	  This manuscript has been read and accepted for the \\
+	  Graduate Faculty in Computer Science in satisfaction of \\
+	  the dissertation requirement for the degree of Doctor of Philosopy.
+        \begin{center}
+        \begin{minipage}{5.6in}
+	\vspace{0.6in}
+        {\shortstack{\vrule width 1.5in height 0.6pt}}
+        \hspace{0.4in} 
+        {\shortstack{\vrule width 3.5in height 0.6pt}}
+        \end{minipage}
+        \begin{minipage}{5.6in}
+	\vspace{0.1in}
+        {\shortstack{Date}}
+        \hspace{1.6in} 
+        {\shortstack{Dr. George Wolberg, Chair of Examining Committee}}
+        \end{minipage}
+	\end{center}
+
+        \begin{center}
+        \begin{minipage}{5.6in}
+	\vspace{0.6in}
+        {\shortstack{\vrule width 1.5in height 0.6pt}}
+        \hspace{0.4in} 
+        {\shortstack{\vrule width 3.5in height 0.6pt}}
+        \end{minipage}
+        \begin{minipage}{5.6in}
+	\vspace{0.1in}
+        {\shortstack{Date}}
+        \hspace{1.6in} 
+        {\shortstack{Dr. Theodore Brown, Executive Officer}}
+        \end{minipage}
+	\end{center}
+
+        \begin{center}
+        \begin{minipage}{5.6in}
+	\vspace{0.6in}
+        \hspace{0.6in} 
+        {\shortstack{Dr. Zhigang Zhu}}
+        \end{minipage}
+        \begin{minipage}{5.6in}
+	\vspace{0.05in}
+        \hspace{0.6in} 
+        {\shortstack{\vrule width 3.5in height 0.6pt}}
+        \end{minipage}
+        \begin{minipage}{5.6in}
+	\vspace{0.4in}
+        \hspace{0.6in} 
+        {\shortstack{Dr. Ioannis Stamos}}
+        \end{minipage}
+        \begin{minipage}{5.6in}
+        \hspace{0.6in} 
+        {\shortstack{\vrule width 3.5in height 0.6pt}}
+        \end{minipage}
+        \begin{minipage}{5.6in}
+	\vspace{0.4in}
+        \hspace{0.6in} 
+        {\shortstack{Dr. Michael Reed}}
+        \end{minipage}
+        \begin{minipage}{5.6in}
+        \hspace{0.6in} 
+        {\shortstack{\vrule width 3.5in height 0.6pt}}
+        \end{minipage}
+        \begin{minipage}{5.6in}
+	\vspace{0.1in}
+        \hspace{0.6in} 
+        {\shortstack{Supervisory Committee}}
+        \end{minipage}
+	\end{center}
+
+%	{\signature{Dr. Zhigang Zhu}}
+%	{\signature{Dr. Ioannis Stamos}}
+%	{\signature{Dr. Zhe Fan}}
+%	Supervisory Committee
+	\vfill
+	\begin{center}
+          \uppercase{The City University of New York}
+	\end{center}
+        \end{center}\clearpage}
+
+\long\def\copysignature#1{%
+        \begin{center}
+%        \begin{minipage}{3in}
+ %       \parindent=0pt
+        \vspace{.15in}
+        {\shortstack{#1}}
+ %       \end{minipage}
+        \end{center}}
+
+
+\def\copysignaturepage{
+%       \thispagestyle{empty}  - removed by ofk
+        \setcounter{page}{2} %added by ofk, must be numbered page ii
+        \begin{center}
+        {\arialbf \@univ}\\
+        \arial The Graduate School
+        \vspace*{0.4in}\\
+        {\arialbf \@theauthor}
+        \vspace*{0.4in}\\
+        We, the dissertation committee for the above candidate for\\
+        the degree of \@degree, hereby recommend \\
+        acceptance of this dissertation.
+        \vfill
+        \copysignature{\arialbf\@advisor}
+
+        \vfill
+        \copysignature{\arialbf\@firstreader}
+        \vfill
+        \copysignature{\arialbf\@secondreader}
+        \vfill
+        \copysignature{\arialbf\@thirdreader}
+        \vspace{.1in}
+        This dissertation is accepted by the Graduate School\\
+        \begin{minipage}{4.6in}
+        \vspace{.5in}
+        \ \bigskip\bigskip\bigskip
+
+        \hspace{1in} \hbox to 3.5in{\hfil\shortstack{Lawrence Martin\\ Dean of the Graduate School}}
+
+        \end{minipage}
+        \end{center}\clearpage}
+
+\def\abstractpage#1{%
+        \thispagestyle{plain}
+        \begin{center}
+        {Abstract}\\
+        \vspace{.2in}
+        {\uppercase\expandafter{\@thetitle}}
+        \vspace{.05in}\\
+        by\\
+        {\@theauthor}
+        \end{center}
+	{Advisor: Professor George Wolberg} \\
+        \input{#1}
+    \clearpage}
+
+\def\acknowledgepage#1{
+        \prefacesection{Acknowledgements}
+    %\thispagestyle{empty}
+        %\pagestyle{empty}
+        \input{#1}\clearpage \pagestyle{headings}}
+        
+\def\publication#1{
+        \prefacesection{Publications}
+        \thispagestyle{plain}
+        \input{#1}
+        }
+
+\def\beforepreface{
+    \pagenumbering{roman}
+    \pagestyle{plain}
+    \titlep
+    \ifcopyright\copyrightpage\fi
+    \ifsignature
+        \signaturepage
+        \clearpage
+    \else
+        \setcounter{page}{2}  % Abstract should begin on page iii
+    \fi
+    }
+
+\def\prefacesection#1{%
+    \chapter*{#1}
+    %\addcontentsline{toc}{chapter}{#1}
+}
+
+\def\afterpreface#1{\newpage
+    \tableofcontents
+    \newpage
+    \iftablespage
+        {\addvspace{10pt}
+        \let\saveaddvspace=\addvspace
+        \def\addvspace##1{}
+            \addcontentsline{toc}{chapter}{List of Tables}
+        \listoftables
+        \let\addvspace=\saveaddvspace}
+        \newpage
+    \fi
+    \iffigurespage
+        {\addvspace{10pt}
+        \let\saveaddvspace=\addvspace
+        \def\addvspace##1{}
+            \addcontentsline{toc}{chapter}{List of Figures}
+        \listoffigures
+        \let\addvspace=\saveaddvspace}
+        \newpage
+    \fi
+    \acknowledgepage{#1}
+    \pagenumbering{arabic}
+    \pagestyle{headings}}
+
+% Start with pagestyle{headings} in case front matter isn't processed
+
+\newif\ifdraft
+\draftfalse
+\newif\ifrough
+
+\def\settings{%
+    \ifdraft
+        \oddsidemargin  0.0in
+        \evensidemargin 0.0in
+        \topmargin     -0.25in
+        \textheight     9.0in
+        \textwidth      6.5in
+        \renewcommand{\baselinestretch}{1.1}
+    \else
+        \oddsidemargin  0.5in
+        \evensidemargin 0.5in
+        \topmargin      0.8in % 0.5 really should be 0.5in, sekar had 0
+        \textheight     7.0in % 8.0in this is to change the height of the text.
+        \textwidth      5.5in
+        \renewcommand{\baselinestretch}{1.2}% 1.5???
+    \fi
+    \marginparwidth 40pt
+    \marginparsep   10pt
+    \parindent 2em
+    \headsep        0.40in % sekar had 0.4in
+    \setcounter{secnumdepth}{3}
+    \renewcommand{\topfraction}{0.95}
+    \renewcommand{\bottomfraction}{0.95}
+    \renewcommand{\textfraction}{0.05}
+    \brokenpenalty=100000
+    \tolerance=20000
+}
+
+\def\preludes#1#2#3{%
+    \pagestyle{plain}
+    \pagenumbering{roman}
+    \ifrough
+        \author{\@shortname}
+        \maketitle
+        \begin{abstract}
+        \input{#1}
+        \end{abstract}
+        \newpage
+        \tableofcontents
+        \newpage
+        \pagenumbering{arabic}
+    \else
+        \beforepreface
+        \abstractpage{#1}
+        \dedicationpage{#2}
+        \afterpreface{#3}
+    \fi
+
+}
+
+
+% TeX doesnt list Bib as a seperate chapter in table of contents; fix it.
+
+\def\epilogue#1{
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{#1}
+\ifdraft
+    \typeout{*}
+    \typeout{******  DRAFT (readable) ******}
+    \typeout{*}
+\else
+    \ifumiabstract
+        \typeout{*}
+        \typeout{*****  UMI ABSTRACT; extract only title and abstract pages ******}
+        \typeout{*}
+    \else
+        \typeout{*}
+        \typeout{******  GRAD SCHOOL FORMAT ******}
+        \typeout{*}
+\fi
+}
+
+ \pagestyle{headings}
+ %\makeatother

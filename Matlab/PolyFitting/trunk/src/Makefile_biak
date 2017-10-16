@@ -1,0 +1,139 @@
+# This is the top level Makefile for compiling VeriSol under Windows
+# - define this here, or get it from the environment
+TOPSRC=C:\Liwh\Dev\Matlab\SVN_PolyFitting\src
+PRODUCT=Project
+TARGET=$(TOPSRC)\$(PRODUCT).exe
+
+PRODIR=$(TOPSRC)\Main
+GCDIR=$(TOPSRC)\maxflow
+GLUDIR=$(TOPSRC)\Glu
+DPSIMPPOLYDIR=$(TOPSRC)\DPSimpPoly
+DOBJDIR=$(TOPSRC)\obj
+
+MACHINE=PC
+CC=cl.exe
+LINK=link.exe
+
+.SUFFIXES:.obj .hh .cpp .c .h
+
+
+
+#AC_COMMON_FLAGS =/DPRODUCT /DCLOCK_RESOLUTION=60 /DRLIMIT_DATA_DEFAULT=16777216 /DNDEBUG=1 /DSTDC_HEADERS=1 /DHAVE_SYS_WAIT_H=1  /DHAVE_SYS_STAT_H=1  /DHAVE_ERRNO_H=1 /DHAVE_ASSERT_H=1 /DHAVE_SYS_WAIT_H=1  /DHAVE_SYS_TYPES_H=1    /DHAVE_STDARG_H=1  /DSIZEOF_VOID_P=4 /DSIZEOF_INT=4 /DHAVE_IEEE_754=1 /DPAGE_SIZE=4096 /DLG_PAGE_SIZE=12 /DRETSIGTYPE=void /DHAVE_STRCOLL=1   /DHAVE_GETHOSTNAME=1 /DHAVE_STRCSPN=1 /DHAVE_STRERROR=1 /DHAVE_STRSPN=1 /DHAVE_STRSTR=1 /DHAVE_GETENV=1 /DHAVE_STRCHR=1 /DHAVE_GETRLIMIT=1 /DHAVE_GETRUSAGE=1 /DHAVE_VALLOC=1 /DBNODE16 /DHAVE_IEEE_754 /DUNIX100  /DEXTERN=extern /Dvms=1 /DWIN=1 /DWIN_SUN /DMSDOS  /DHYBRID_SAT /DSRC1 /DBLOCK /DMCLK /DLEARN /DCYGWIN /DUSE_MACRO=1 /DEMM /DSPA /DDIVERBDD /DILYA /DSHK /Dassert=assertionChecker /DASSERT=assertionChecker /DSTDC_HEADERS=1 /DHAVE_UNLINK=1  /DEMM /DGPP342 /DPRODUCT /DVERISOL_DEBUG /DPSL /DWIN_ALRM /DFIX_PURIFY
+
+#AC_FLAGS = $(AC_COMMON_FLAGS) 
+
+
+HDRS= "$(GLUDIR)\array.h"\
+"$(GLUDIR)\hough.h"\
+"$(GLUDIR)\avl.h"\
+"$(GLUDIR)\st.h"\
+"$(GLUDIR)\util.h"\
+"$(DPSIMPPOLYDIR)\DP.h" \
+"$(GCDIR)\graph.h"\
+"$(PRODIR)\project.h"
+
+PROJECTSRCS= "$(GLUDIR)\array.c"\
+"$(GLUDIR)\hough.c"\
+"$(GLUDIR)\avl.c"\
+"$(GLUDIR)\st.c"\
+"$(GLUDIR)\getopt.c"\
+"$(DPSIMPPOLYDIR)\DP.c"\
+"$(DPSIMPPOLYDIR)\nonrec.c"\
+"$(PRODIR)\main_taper.c" \
+"$(PRODIR)\seg_merge.c" \
+"$(GCDIR)\graph.cpp" \
+"$(PRODIR)\project.c"
+
+
+PROJECTOBJS= "$(DOBJDIR)\array.obj"\
+"$(DOBJDIR)\project.obj" \
+"$(DOBJDIR)\avl.obj"\
+"$(DOBJDIR)\hough.obj"\
+"$(DOBJDIR)\st.obj"\
+"$(DOBJDIR)\getopt.obj"\
+"$(DOBJDIR)\DP.obj"\
+"$(DOBJDIR)\nonrec.obj"\
+"$(DOBJDIR)\main_taper.obj"\
+"$(DOBJDIR)\seg_merge.obj"\
+"$(DOBJDIR)\graph.obj"
+
+LINK_OBJS= "$(DOBJDIR)\array.obj"\
+"$(DOBJDIR)\avl.obj"\
+"$(DOBJDIR)\hough.obj"\
+"$(DOBJDIR)\st.obj"\
+"$(DOBJDIR)\getopt.obj"\
+"$(DOBJDIR)\DP.obj"\
+"$(DOBJDIR)\nonrec.obj"\
+"$(DOBJDIR)\main_taper.obj"\
+"$(DOBJDIR)\seg_merge.obj"\
+"$(DOBJDIR)\graph.obj"\
+"$(DOBJDIR)\project.obj"
+
+# Uncomment this line when able to build the license library
+#LICENSELIB=LICfv.lib
+# Leaving empty for now as a place holder
+LICENSELIB=
+
+
+all: $(TARGET)
+
+# define LIB for directories of library
+LIB=C:\Program Files\Microsoft Visual Studio 8\VC\lib;C:\Program Files\Microsoft Visual Studio 8\VC\PlatformSDK\lib;C:\Program Files\Microsoft Visual Studio 8\VC\atlmfc\lib;C:\Program Files\Microsoft Visual Studio 8\VC\atlmfc\lib\i386
+
+VCINSTALLDIR="C:\Program Files\Microsoft Visual Studio 8\VC"
+AC_FLAGS = /DDEBUG /DWIN
+
+VC_OPT=/TP /nologo /ML  /GX /O2 /DWIN32 /DPC /DANSI_PROTO  /Fo"$(DOBJDIR)\\"
+INCLUDEHDRS= /I$(GCDIR) /I$(GLUDIR) /I$(PRODIR) /I$(DPSIMPPOLYDIR) /I$(VCINSTALLDIR)\include /I$(VCINSTALLDIR)\PlatformSDK\include /I$(VCINSTALLDIR)\atlmfc\include 
+
+#CFLAGS  = $(AC_FLAGS) $(VC_OPT) $(INCLUDEHDRS)
+#CFLAGS = $(AC_FLAGS) $(INCLUDEHDRS) /Fo"$(DOBJDIR)\\" /TP /Zi /nologo /EHsc
+CFLAGS = $(AC_FLAGS) $(INCLUDEHDRS) /Fo"$(DOBJDIR)\\" /TP /DWIN32 /DPC /Zi /w /nologo /EHsc
+
+#LINK32_FLAGS=kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib Ws2_32.lib wsock32.lib
+
+LINK32_FLAGS=kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
+GDIPLUS_LIB=$(VCINSTALLDIR)\PlatformSDK\lib\gdiplus.lib
+$(TARGET): $(DOBJDIR) $(PROJECTOBJS)
+   $(LINK)   /OUT:$(TARGET) $(LINK32_FLAGS) /debug $(LINK_OBJS) $(GDIPLUS_LIB)
+
+getobjs: $(PROJECTSRCS)
+	!@$(CC) $(CFLAGS)  /c $?
+	-@etags -a $(PROJECTSRCS) $(HDRS)
+
+tag:
+	@echo Creating tags...
+	-@etags -a $(PROJECTSRCS) $(HDRS) $(GLUDIR)/*.h
+clean:
+	@echo Erasing $(TARGET)
+	-@erase "$(TARGET)" 
+	@echo Erasing $(DOBJDIR)\*.*
+	-@erase "$(DOBJDIR)\*.obj"
+
+run:
+	$(CC) $(CFLAGS)  /c $(PRODIR)/run.c
+   $(LINK)   /OUT:run.exe $(LINK32_FLAGS) /debug "obj\run.obj"
+
+
+$(DOBJDIR)\main_taper.obj: $(PRODIR)\main_taper.c
+	$(CC) $(CFLAGS) /c $?
+$(DOBJDIR)\seg_merge.obj: $(PRODIR)\seg_merge.c
+	$(CC) $(CFLAGS) /c $?
+$(DOBJDIR)\graph.obj: $(GCDIR)\graph.cpp
+	$(CC) $(CFLAGS) /c $?
+$(DOBJDIR)\project.obj: $(PRODIR)\project.c
+	$(CC) $(CFLAGS) /c $?
+$(DOBJDIR)\array.obj: $(GLUDIR)\array.c
+	$(CC) $(CFLAGS) /c $?
+$(DOBJDIR)\st.obj: $(GLUDIR)\st.c
+	$(CC) $(CFLAGS) /c $?
+$(DOBJDIR)\avl.obj: $(GLUDIR)\avl.c
+	$(CC) $(CFLAGS) /c $?
+$(DOBJDIR)\hough.obj: $(GLUDIR)\hough.c
+	$(CC) $(CFLAGS) /c $?
+$(DOBJDIR)\getopt.obj: $(GLUDIR)\getopt.c
+	$(CC) $(CFLAGS) /c $?
+$(DOBJDIR)\DP.obj: $(DPSIMPPOLYDIR)\DP.c
+	$(CC) $(CFLAGS) /c $?
+$(DOBJDIR)\nonrec.obj: $(DPSIMPPOLYDIR)\nonrec.c
+	$(CC) $(CFLAGS) /c $?

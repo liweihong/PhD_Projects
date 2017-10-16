@@ -1,0 +1,4 @@
+pdflatex accv.tex
+pdflatex accv.tex
+bibtex accv
+pdflatex accv.tex

@@ -1,0 +1,22 @@
+A novel technique of three-dimensional reconstruction segmentation and analysis for sliced images of biological tissues
+
+1.
+Campagnola, PJ; Millard, AC; Terasaki, M; Hoppe, PE; Malone, CJ; Mohler, WA. Three dimensional high resolution second harmonic generation imaging of endogenous structural proteins in biological tissues. Biophys J. 2002;82:493–508. [PubMed]
+2.
+Crowther, RA. Procedures for three-dimensional reconstruction of spherical viruses by Fourier synthesis from electron microsgraphs. Phil Trans R Soc Lond B. 1971;261:221–230. [PubMed]
+3.
+Guo, JF; Cai, YL; Wang, YP. Morphology-based interpolation for 3D medical image reconstruction. Computerized Medical Imaging and Graphics. 1995;19:267–269. doi: 10.1016/0895-6111(95)00007-D. [PubMed]
+4.
+Li, J; Lei, MP; Huang, YX; Tan, RC; Yang, B. Fast three-dimensional bone image segmentation in computer-operated simulation system. J Fourth Mil Med Univ. 2001;22(18):1667–1671. (in Chinese).
+5.
+Li, J; Lei, MP; Yang, B; Tan, RC; Chen, WX; Chen, GW; Huang, YX. Study on three-dimensional measurement incranio-maxillofacial computer operation simu-lation system. J Fourth Mil Med Univ. 2003;24(2):186–189. (in Chinese).
+6.
+Nitsch, M; Walz, J; Typke, D; Klumpp, M; Essen, LO; Baumeister, W. Group II chaperonin in an open conformation examined by electron tomography. Nature Structural Biology. 1998;5(10):855–859. doi: 10.1038/2296.
+7.
+Paddock, S. Optical sectioning–slices of life. Science. 2002;295:1319–1321. doi: 10.1126/science.295.5558.1319. [PubMed]
+8.
+Sharpe, J; Ahlgren, U; Perry, P; Hill, B; Ross, A; Hecksher-Sorensen, J; Baldock, R; Davidson, D. Optical projection tomography as a tool for 3D microscopy and gene expression studies. Science. 2002;296:541–545. doi: 10.1126/science.1068206. [PubMed]
+9.
+Trehan, G; Gauvrit, JY; Leclerc, X. Intracranial aneurysms: diagnostic and therapeutic contribution of rotational brain arteriography with 3D reconstruction. Rev Neurol (Paris). 2003;159(3):340–345. [PubMed]
+10.
+Yelbuz, TM; Choma, MA; Thrane, L; Kirby, ML; Izatt, JA. Optical coherence tomography: a new high-resolution imaging technology to study cardiac development in chick embryos. Circulation. 2002;106(22):2771–2777. doi: 10.1161/01.CIR.0000042672.51054.7B. [PubMed]

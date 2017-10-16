@@ -1,0 +1,25 @@
+------ Content ----
+
+*. Animation on building extraction/slicing.
+	- Draw a white building 3D model, and then fly two thin line to slice the
+		the model to a 2D image, move it on the screen
+	- The old model will be black out a thin slab, 
+	- Draw another one, do the same thing until 4 slices
+*. Animation on building construction --> tapered and extrusion
+	- Draw a demo house with a door on front of it.
+	- Two extrusion + one tapering will create this house.
+*. Animation on BPA algorithm
+	- Draw the circle turning around a point until reach to another one.
+*. The contribution slide
+
+*. Re-do the sliced images - with new size 1024 x 392, not old one: 933 x 392 for ACCV
+
+------ Q/A -----
+
+*. why HD, not other measurement?
+*. why so short time between defense?
+	1. this timeline can be met only if everything goes smoothly. If not, it cannot be met
+	2. We have put a lot of efforts on this work in the past several years. 
+	   We tried all kinds of ideas and techniques to conquer this problem, and 
+	    now we have found an effective way to solve it. We don't want to take the
+	    exam too early when we are not sure the results.

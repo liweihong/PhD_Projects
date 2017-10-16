@@ -1,0 +1,39 @@
+\newchapt{Future Work}{chapt9}{Future Work}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Future Work           %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion and Future Work}
+
+This paper has presented an efficient algorithm for lightweight 3D modeling
+of urban buildings from range data.
+Our work is based on the observation that buildings can be viewed as the
+combination of two basic components: extrusion and tapering.
+The range data is partitioned into volumetric slabs whose 3D points are
+projected onto a series of uniform cross-sectional planes.
+The points in those planes are vectorized using an adaptive BPA algorithm
+to form a set of polygonal contour slices.
+Prominent keyslices are extracted from this set.
+Applying extrusion to these keyslices forms lightweight 3D models.
+Experimental results on both exterior and interior urban building datasets
+have been presented to validate the proposed approach.
+
+We achieve further geometry compression by detecting a series of
+slices that coincide with a taper operation.
+In the current work, we demonstrate how to infer the taper-to-line
+geometry structure.
+In future work we will extend this to include the taper-to-point geometry
+structure, which appears frequently in Gothic architecture (e.g., churches).
+A nice characteristic of this structure is that the image slices will converge
+to a point, which is a good inference cue.
+
+Additional future work is to investigate the modeling of the ``follow-me''
+geometry structure.
+This is a more complicated geometry structure featured in Google SketchUp
+that exists when the model can be reconstructed by moving a cross-sectional
+unit along a curve trajectory.
+We will track the slices to obtain the curve trajectory.
+Finally, we will optimize the performance of the BPA vectorization module,
+which consumes the bulk of the computation time.
+

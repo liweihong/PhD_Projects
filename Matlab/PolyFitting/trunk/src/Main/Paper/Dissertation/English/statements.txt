@@ -1,0 +1,1 @@
+The problem of synchronization-based transaction delineation is intimately connected with the problem of pairwise CFL-reachability which is to decide whether two given program locations c1 and c2 in thread T1 and T2, respectively, are simultaneously reachable in the presence of recursion in threads and scheduling constraints imposed by synchronization primitives.

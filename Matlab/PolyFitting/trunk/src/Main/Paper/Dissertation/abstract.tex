@@ -1,0 +1,24 @@
+Laser range scanners are widely used to acquire accurate scene measurements.
+The massive point clouds they generate, however, present challenges to
+efficient modeling and visualization.
+State-of-the-art techniques for generating 3D models from voluminous
+range data is well-known to demand large computational and storage requirements.
+In this thesis, attention is directed to the modeling of urban buildings
+directly from range data.
+We present an efficient modeling algorithm that exploits \emph{a priori}
+knowledge that buildings can be modeled from cross-sectional contours
+using extrusion and tapering operations.
+Inspired by this simple workflow, we identify key cross-sectional slices among
+the point cloud.
+These slices capture changes across the building facade along the principal axes.
+Standard image processing algorithms are used to remove noise, fill holes,
+and vectorize the projected points into planar contours.
+Applying extrusion and tapering operations to these contours
+permits us to achieve dramatic geometry compression, making the resulting
+models suitable for web-based applications such as Google Earth
+or Microsoft Virtual Earth.
+This work has applications in architecture, urban design, virtual city
+touring, and online gaming.
+We present experimental results on the exterior and interior of urban building
+datasets to validate the proposed algorithm.
+
